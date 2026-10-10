@@ -39,6 +39,7 @@ export function useMotion() {
       cleanup = m.animatePage(root, {
         skipInView: firstRun && !pendingAlive,
         viewTransition: viewTransitionActive,
+        firstRun,
       });
       firstRun = false;
       clearPending();

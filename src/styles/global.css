@@ -36,8 +36,25 @@ body {
 
 /* Ожидание движка анимаций: элементы прозрачны, но занимают место в вёрстке
    и остаются доступны экранным дикторам. */
-.motion-pending [data-reveal] {
+.motion-pending [data-reveal]:not([data-reveal-intro]) {
   opacity: 0;
+}
+
+/* Заголовок первого экрана при первой загрузке анимируется силами CSS, не дожидаясь
+   движка: он сразу виден браузеру, и главный элемент страницы появляется быстрее (LCP). */
+.motion-intro [data-reveal-intro] {
+  animation: intro-rise var(--dur-reveal) var(--ease-out) backwards;
+}
+
+@keyframes intro-rise {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(0.35em);
+  }
+  to {
+    clip-path: inset(-0.25em -0.25em -0.25em -0.25em);
+    transform: none;
+  }
 }
 
 /* Заголовки с построчной анимацией переносятся обычным способом, без balance:

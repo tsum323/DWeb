@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#17191B" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <!--app-head-->
     <script>
       /* Пока движок анимаций загружается, анимируемые элементы скрыты (без сдвига вёрстки).
@@ -12,9 +14,10 @@
       (function () {
         if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
         var root = document.documentElement;
-        root.classList.add('motion-pending');
+        root.classList.add('motion-pending', 'motion-intro');
         setTimeout(function () {
           root.classList.remove('motion-pending');
+          root.classList.remove('motion-intro');
         }, 2500);
       })();
     </script>

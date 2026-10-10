@@ -43,7 +43,16 @@ function head(meta, { canonical = true } = {}) {
     `<meta property="og:title" content="${escape(meta.title)}" />`,
     `<meta property="og:description" content="${escape(meta.description)}" />`,
     canonical ? `<meta property="og:url" content="${url}" />` : '',
+    `<meta property="og:image" content="${site.url}${meta.image.path}" />`,
+    '<meta property="og:image:width" content="1200" />',
+    '<meta property="og:image:height" content="630" />',
+    `<meta property="og:image:alt" content="${escape(meta.image.alt)}" />`,
     '<meta name="twitter:card" content="summary_large_image" />',
+    `<meta name="twitter:image" content="${site.url}${meta.image.path}" />`,
+    // JSON-LD: «<» экранируется, чтобы текст из данных не мог закрыть тег script.
+    meta.jsonLd
+      ? `<script type="application/ld+json">${JSON.stringify(meta.jsonLd).replace(/</g, '\\u003c')}</script>`
+      : '',
     ...preloads,
   ]
     .filter(Boolean)
