@@ -12,7 +12,9 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "og": "node scripts/og-images.mjs",
-    "icons": "node scripts/icons.mjs"
+    "icons": "node scripts/icons.mjs",
+    "test": "playwright test",
+    "check": "tsc -b && eslint . && prettier --check ."
   },
   "dependencies": {
     "@fontsource-variable/geologica": "^5.3.0",
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.56.1",
     "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -32,7 +35,6 @@
     "eslint": "^10.12.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.13.0",
-    "playwright": "^1.56.1",
     "prettier": "^3.9.9",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3",
