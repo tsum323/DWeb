@@ -1,0 +1,86 @@
+.live {
+  padding-block: var(--space-block);
+}
+
+.live > div {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.liveLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-block: var(--space-6);
+  border-block: var(--border-width) solid var(--line-strong);
+}
+
+.host {
+  overflow-wrap: anywhere;
+}
+
+.liveIcon {
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .liveLink:hover .liveIcon {
+    transform: translate(6px, -6px);
+  }
+
+  .liveLink:hover .host {
+    color: var(--accent-text);
+  }
+}
+
+.outro {
+  padding-block: var(--space-section);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-section) var(--grid-gap);
+}
+
+@media (min-width: 64em) {
+  .grid {
+    grid-template-columns: 5fr 7fr;
+    column-gap: calc(var(--grid-gap) * 3);
+    align-items: start;
+  }
+}
+
+.next {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--line);
+}
+
+.nextLink {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.soon {
+  padding: var(--space-5);
+  border: var(--border-width) dashed var(--line-strong);
+  color: var(--fg-muted);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  justify-self: start;
+}
+
+.cta {
+  display: grid;
+  gap: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--line);
+}

@@ -2,9 +2,9 @@ import { Link } from 'react-router';
 import type { Project } from '../../content/schema';
 import { Stamp } from '../blueprint/Stamp';
 import { Col, Grid } from '../layout/Grid';
-import { Frame } from '../media/Frame';
-import { sentenceList } from '../../lib/text';
+import { sentenceList, typograph } from '../../lib/text';
 import { Actions } from '../ui/Actions';
+import { CoverVisual } from './CoverVisual';
 import { Button } from '../ui/Button';
 import { Tag } from '../ui/Tag';
 import styles from './ProjectSheet.module.css';
@@ -47,13 +47,12 @@ export function ProjectSheet({ project, index }: ProjectSheetProps) {
 
       {/* Изображения дублируют ссылку заголовка, поэтому скрыты от клавиатуры и дикторов как ссылка. */}
       <Link to={caseUrl} className={styles.visual} tabIndex={-1} aria-hidden="true">
-        <Frame {...cover.desktop} className={styles.desktop} sizes="(min-width: 64em) 75vw, 100vw" />
-        <Frame {...cover.mobile} className={styles.mobile} sizes="(min-width: 64em) 18vw, 40vw" />
+        <CoverVisual cover={cover} />
       </Link>
 
       <Grid className={styles.info}>
         <Col span={{ sm: 4, md: 8, lg: 6 }}>
-          <p className="t-body-l t-measure">{project.summary}</p>
+          <p className="t-body-l t-measure">{typograph(project.summary)}</p>
           <ul role="list" className={styles.stack} aria-label="Технологии">
             {project.stack.map((t) => (
               <li key={t}>

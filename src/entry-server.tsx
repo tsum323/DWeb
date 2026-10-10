@@ -6,6 +6,9 @@ import { AppRoutes } from './app/routes';
 export { getMeta, prerenderPaths, absoluteUrl } from './seo/meta';
 export { site } from './content/site';
 
+/** Базовый путь сайта из vite.config.ts — единый источник для пререндера. */
+export const base = import.meta.env.BASE_URL;
+
 /** Рендер страницы в HTML-строку на этапе сборки. */
 export function render(path: string) {
   return renderToString(
