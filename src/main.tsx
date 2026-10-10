@@ -1,17 +1,24 @@
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter, HashRouter } from 'react-router';
 import { AppRoutes } from './app/routes';
 import './styles/global.css';
 
 const container = document.getElementById('root');
 if (!container) throw new Error('Не найден элемент #root');
 
+// VITE_ROUTER=hash — сборка для превью, где сайт открыт не по адресу /dweb/.
 const app = (
   <StrictMode>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <AppRoutes />
-    </BrowserRouter>
+    {import.meta.env.VITE_ROUTER === 'hash' ? (
+      <HashRouter>
+        <AppRoutes />
+      </HashRouter>
+    ) : (
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <AppRoutes />
+      </BrowserRouter>
+    )}
   </StrictMode>
 );
 
