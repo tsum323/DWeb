@@ -1,0 +1,27 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.main {
+  flex: 1;
+  outline: none;
+}
+
+/* Ссылка пропуска появляется только при навигации с клавиатуры. */
+.skip {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: calc(var(--z-menu) + 1);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--signal);
+  color: var(--graphite-900);
+  font-weight: 500;
+  transform: translateY(-200%);
+}
+
+.skip:focus-visible {
+  transform: none;
+}

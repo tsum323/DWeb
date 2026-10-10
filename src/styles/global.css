@@ -12,6 +12,11 @@ body {
   color: var(--fg);
 }
 
+/* При переходе к якорю (/#work) начало раздела не прячется под шапкой. */
+[id] {
+  scroll-margin-top: 4rem;
+}
+
 ::selection {
   background-color: var(--signal);
   color: var(--graphite-900);

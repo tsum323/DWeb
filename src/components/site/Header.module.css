@@ -1,0 +1,121 @@
+.header {
+  --header-height: 4rem;
+
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  border-bottom: var(--border-width) solid transparent;
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.header[data-scrolled='true'] {
+  border-bottom-color: var(--line);
+}
+
+/* Спрятанная шапка возвращается, как только в неё попадает фокус с клавиатуры. */
+.header[data-hidden='true']:not(:focus-within) {
+  transform: translateY(-100%);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-height: var(--header-height);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-right: auto;
+}
+
+.nav,
+.cta {
+  display: none;
+}
+
+.links {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: var(--text-small);
+  font-weight: 450;
+}
+
+/* Подчёркивание прорисовывается слева направо при наведении. */
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.6rem;
+  height: var(--border-width);
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.cta {
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.5rem;
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-1);
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-size: var(--text-small);
+  font-weight: 500;
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+
+.cta svg {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding-inline: var(--space-2);
+  margin-right: calc(var(--space-2) * -1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .cta:hover {
+    background-color: var(--fg);
+    color: var(--bg);
+  }
+
+  .cta:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+@media (min-width: 64em) {
+  .nav,
+  .cta {
+    display: flex;
+  }
+
+  .menuButton {
+    display: none;
+  }
+}

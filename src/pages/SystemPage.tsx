@@ -1,21 +1,17 @@
 import { useState } from 'react';
-import { Container } from '../components/layout/Container';
 import { Col, Grid } from '../components/layout/Grid';
 import { Section } from '../components/layout/Section';
 import { Button } from '../components/ui/Button';
-import { Logo } from '../components/ui/Logo';
 import { SectionLabel } from '../components/ui/SectionLabel';
 import { Tag } from '../components/ui/Tag';
 import { TextLink } from '../components/ui/TextLink';
-import { GridToggle } from '../components/blueprint/GridToggle';
-import { Readout } from '../components/blueprint/Readout';
 import { Rule } from '../components/blueprint/Rule';
 import { Stamp } from '../components/blueprint/Stamp';
 import styles from './SystemPage.module.css';
 
 /*
  * Служебная страница этапа A: все токены и базовые компоненты на одном листе.
- * На этапе B она переедет на отдельный маршрут, доступный только в разработке.
+ * Доступна по адресу /system только при разработке (npm run dev).
  */
 
 const colors = [
@@ -114,55 +110,7 @@ export function SystemPage() {
 
   return (
     <>
-      <header data-surface="dark" className={styles.bar}>
-        <Container className={styles.barInner}>
-          <Logo />
-          <p className="t-mono t-muted">Дизайн-система · этап A</p>
-          <GridToggle />
-        </Container>
-      </header>
-
-      <main id="main">
-        {/* Образец первого экрана: проверка характера типографики. */}
-        <section data-surface="dark" className={styles.hero} aria-labelledby="hero-title">
-          <Container>
-            <div className={styles.heroMain}>
-              <SectionLabel>DWeb — сайты и интерфейсы</SectionLabel>
-              <h1 id="hero-title" className={`t-display ${styles.heroTitle}`}>
-                {headlines[0]}
-              </h1>
-              <Grid className={styles.heroGrid}>
-                <Col span={{ sm: 4, md: 8, lg: 7 }}>
-                  <p className={`t-body-l t-measure ${styles.heroLead}`}>
-                    Проектирую и разрабатываю сайты для небольшого бизнеса: от структуры и дизайна до
-                    адаптивной вёрстки и запуска.
-                  </p>
-                  <div className={styles.actions}>
-                    <Button href="#components">Смотреть работы</Button>
-                    <Button href="#components" variant="secondary">
-                      Обсудить проект
-                    </Button>
-                  </div>
-                </Col>
-                <Col span={{ sm: 4, md: 8, lg: 4 }} start={{ lg: 9 }} className={styles.heroAside}>
-                  <Stamp
-                    rows={[
-                      { term: 'Специализация', value: 'Сайты для бизнеса' },
-                      { term: 'Статус', value: 'Принимаю проекты' },
-                      { term: 'Формат', value: 'Дизайн + разработка' },
-                      { term: 'Стек', value: 'HTML, CSS, JavaScript' },
-                    ]}
-                  />
-                </Col>
-              </Grid>
-            </div>
-            <div className={styles.heroFoot}>
-              <Readout />
-              <p className="t-mono t-muted">↓ 01 / Работы</p>
-            </div>
-          </Container>
-        </section>
-
+      <div>
         <Section surface="light" index="A1" label="Варианты заголовка" labelledBy="headlines-title">
           <h2 id="headlines-title" className="visually-hidden">
             Варианты заголовка первого экрана
@@ -350,7 +298,7 @@ export function SystemPage() {
             </Button>
           </div>
         </Section>
-      </main>
+      </div>
     </>
   );
 }

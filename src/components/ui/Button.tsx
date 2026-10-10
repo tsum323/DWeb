@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { Link, type LinkProps } from 'react-router';
 import { Icon, type IconName } from './Icon';
 import styles from './Button.module.css';
 
@@ -8,14 +9,18 @@ type Common = {
   children: ReactNode;
 };
 
-type AsLink = Common & { href: string } & Omit<ComponentPropsWithoutRef<'a'>, 'children'>;
-type AsButton = Common & { href?: undefined } & Omit<ComponentPropsWithoutRef<'button'>, 'children'>;
+type AsRoute = Common & { to: LinkProps['to']; href?: undefined } & Omit<LinkProps, 'children' | 'to'>;
+type AsLink = Common & { href: string; to?: undefined } & Omit<ComponentPropsWithoutRef<'a'>, 'children'>;
+type AsButton = Common & { href?: undefined; to?: undefined } & Omit<
+    ComponentPropsWithoutRef<'button'>,
+    'children'
+  >;
 
 /**
  * Кнопка-«ячейка»: текст и иконка разделены тонкой линией, как поля в штампе чертежа.
- * С href рендерится ссылкой, без него — кнопкой.
+ * С to — ссылка внутри сайта, с href — обычная ссылка, без них — кнопка.
  */
-export function Button(props: AsLink | AsButton) {
+export function Button(props: AsRoute | AsLink | AsButton) {
   const { variant = 'primary', icon = 'arrow-right', children, className, ...rest } = props;
   const cls = [styles.button, styles[variant], className].filter(Boolean).join(' ');
   const inner = (
@@ -29,6 +34,13 @@ export function Button(props: AsLink | AsButton) {
     </>
   );
 
+  if (rest.to !== undefined) {
+    return (
+      <Link className={cls} {...(rest as LinkProps)}>
+        {inner}
+      </Link>
+    );
+  }
   if (rest.href !== undefined) {
     return (
       <a className={cls} {...(rest as ComponentPropsWithoutRef<'a'>)}>

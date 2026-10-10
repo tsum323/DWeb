@@ -1,0 +1,9 @@
+.title {
+  max-width: 12ch;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
