@@ -1,0 +1,19 @@
+.page {
+  padding-block: var(--space-block) var(--space-section);
+}
+
+.title {
+  max-width: 14ch;
+  margin-top: var(--space-6);
+}
+
+.lead {
+  margin-block: var(--space-5) var(--space-block);
+  color: var(--fg-muted);
+}
+
+.noscript {
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  border: var(--border-width) dashed var(--line-strong);
+}

@@ -1,0 +1,405 @@
+.form {
+  display: grid;
+  gap: var(--space-7);
+  max-width: 48rem;
+}
+
+/* --- Прогресс: «шкала» из делений, как на линейке чертежа --- */
+.progress {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.bar {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.bar li {
+  flex: 1;
+  height: 4px;
+  background-color: var(--line);
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+
+.bar li[data-state='done'] {
+  background-color: var(--fg);
+}
+
+.bar li[data-state='current'] {
+  background-color: var(--accent-text);
+}
+
+/* --- Вопрос --- */
+.fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  padding: 0;
+}
+
+.legend h2,
+.review h2,
+.done h2 {
+  max-width: 20ch;
+  scroll-margin-top: 6rem;
+}
+
+.legend h2:focus,
+.review h2:focus,
+.done h2:focus {
+  outline: none;
+}
+
+.hint {
+  max-width: var(--measure);
+  margin-top: var(--space-3);
+  color: var(--fg-muted);
+}
+
+.kind {
+  margin-top: var(--space-6);
+  color: var(--fg-muted);
+}
+
+.options {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+@media (min-width: 40em) {
+  .options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Вариант ответа — ячейка с «флажком». Сам input скрыт визуально, но остаётся
+   доступным с клавиатуры и для экранных дикторов. */
+.option,
+.consent {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+
+.option {
+  min-height: 3.5rem;
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--line-strong);
+  border-radius: var(--radius-1);
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+}
+
+.option input,
+.consent input,
+.chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-top: 0.05em;
+  border: var(--border-width) solid var(--line-strong);
+  border-radius: var(--radius-1);
+  color: var(--on-accent);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.box[data-kind='one'] {
+  border-radius: 50%;
+}
+
+.box svg {
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.option:has(input:checked) {
+  border-color: var(--fg);
+  background-color: var(--bg-raised);
+}
+
+input:checked + .box {
+  border-color: var(--accent-text);
+  background-color: var(--accent);
+}
+
+input:checked + .box svg {
+  opacity: 1;
+  transform: none;
+}
+
+.option:has(input:focus-visible),
+.chip:has(input:focus-visible) {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}
+
+.consent input:focus-visible + .box {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .option:hover {
+    border-color: var(--fg);
+  }
+}
+
+/* --- Поля --- */
+.fields {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.fields .field {
+  margin-top: 0;
+}
+
+.label {
+  padding: 0;
+  font-weight: 500;
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--fg-muted);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--line-strong);
+  border-radius: var(--radius-1);
+  background-color: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  /* 16px и больше: iOS не увеличивает страницу при фокусе на поле. */
+  font-size: max(1rem, var(--text-body));
+}
+
+.textarea {
+  resize: vertical;
+  line-height: var(--leading-body);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--fg-muted);
+  opacity: 1;
+}
+
+.input:focus-visible,
+.textarea:focus-visible {
+  outline-offset: 0;
+  border-color: var(--fg);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.error {
+  color: var(--danger);
+  font-size: var(--text-small);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: var(--space-4);
+  border: var(--border-width) solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.chip {
+  position: relative;
+  border-radius: var(--radius-pill);
+}
+
+.chip input:checked + span {
+  border-color: var(--fg);
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+.trap {
+  position: absolute;
+  left: -100vw;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* --- Проверка --- */
+.summary {
+  margin-top: var(--space-6);
+  border-top: var(--border-width) solid var(--line);
+}
+
+.summaryRow {
+  display: grid;
+  gap: var(--space-2) var(--space-4);
+  padding-block: var(--space-4);
+  border-bottom: var(--border-width) solid var(--line);
+}
+
+.summaryRow dt {
+  color: var(--fg-muted);
+}
+
+/* Ответ и кнопка «Изменить» — в одной строке. */
+.summaryRow dd {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin: 0;
+}
+
+.summaryRow dd li + li {
+  margin-top: var(--space-1);
+}
+
+.edit {
+  flex-shrink: 0;
+  min-height: 2.75rem;
+  padding-inline: var(--space-2);
+  margin-top: calc(var(--space-3) * -1);
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (min-width: 40em) {
+  .summaryRow {
+    grid-template-columns: 12rem 1fr;
+  }
+}
+
+.summaryIndex {
+  color: var(--accent-text);
+}
+
+.own {
+  color: var(--fg-muted);
+}
+
+.skipped {
+  color: var(--fg-muted);
+}
+
+.alert {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border-left: 3px solid var(--danger);
+  background-color: var(--bg-raised);
+}
+
+.fallback {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.raw {
+  width: 100%;
+}
+
+.raw summary {
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.raw pre {
+  margin-top: var(--space-2);
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--line);
+  background-color: var(--bg-raised);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+/* --- Навигация по шагам --- */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (max-width: 39.99em) {
+  .nav > * {
+    flex: 1 1 100%;
+  }
+
+  /* На телефоне главная кнопка — первой, под большим пальцем. */
+  .nav > :last-child {
+    order: -1;
+  }
+}
+
+/* --- Готово --- */
+.done {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+  max-width: 48rem;
+}
+
+.doneIcon {
+  color: var(--accent-text);
+}
+
+.done .nav {
+  margin-top: var(--space-4);
+}

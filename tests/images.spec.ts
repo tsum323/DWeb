@@ -3,7 +3,8 @@ import { pages, scrollThrough } from './support/helpers';
 
 /* Изображения: загружаются, имеют описание и заданные размеры (без сдвигов вёрстки). */
 
-for (const p of pages) {
+// Страницы без картинок (анкета, политика) пропускаются.
+for (const p of pages.filter((p) => !('images' in p))) {
   test(`${p.name}: все изображения загружены, с alt и размерами`, async ({ page }) => {
     await page.goto(p.path);
     await scrollThrough(page);

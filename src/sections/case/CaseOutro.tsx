@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { useDiscuss } from '../../components/contact/DiscussDialog';
 import { Container } from '../../components/layout/Container';
 import { Actions } from '../../components/ui/Actions';
 import { Button } from '../../components/ui/Button';
@@ -11,6 +12,7 @@ import styles from './CaseOutro.module.css';
 /** 10–12. Живой проект, переход к следующему кейсу и призыв обсудить похожую задачу. */
 export function CaseOutro({ project }: { project: Project }) {
   const next = getNextProject(project.slug);
+  const discuss = useDiscuss();
   const host = project.live ? new URL(project.live.href).host + new URL(project.live.href).pathname : '';
 
   return (
@@ -64,7 +66,7 @@ export function CaseOutro({ project }: { project: Project }) {
               Расскажите о бизнесе и задаче — предложу структуру и план работ.
             </p>
             <Actions>
-              <Button to="/#contact">Обсудить проект</Button>
+              <Button {...discuss}>Обсудить проект</Button>
             </Actions>
           </div>
         </Container>

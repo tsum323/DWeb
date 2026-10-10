@@ -24,10 +24,10 @@ export const nav = [
 ] as const;
 
 /**
- * Контакты. Сейчас пусто: владелец передаст их позже.
- * Пока список пуст, блок контактов показывает нейтральный текст без ссылок.
+ * Контакты. Показываются в окне «Обсудить проект», в блоке «Контакт» и в подвале.
+ * Если список пуст, вместо ссылок показывается нейтральный текст.
  */
 export const contacts: { email?: string; channels: ExternalLink[] } = {
   email: undefined,
-  channels: [],
+  channels: [{ href: 'https://t.me/psokoa', label: 'Telegram' }],
 };

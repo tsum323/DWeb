@@ -4,6 +4,8 @@ import type { Page } from '@playwright/test';
 export const pages = [
   { name: 'главная', path: '' },
   { name: 'кейс Peaky', path: 'work/peaky/' },
+  { name: 'анкета', path: 'brief/', images: false },
+  { name: 'политика', path: 'privacy/', images: false },
 ] as const;
 
 /** Собирает ошибки страницы и консоли. Ответ 404 для страницы «не найдено» ожидаем. */

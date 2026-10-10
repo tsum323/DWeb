@@ -19,6 +19,8 @@
   --steel-600: #5c6268; /* вторичный текст на светлом: 5.4:1 */
   --signal: #b9f66b; /* акцент: заливка, фокус и метки на тёмном */
   --signal-ink: #2f4f0c; /* акцент в роли текста на светлом: 8.2:1 */
+  --alarm-300: #ff9a8c; /* ошибка на тёмном */
+  --alarm-700: #a3261b; /* ошибка на светлом */
 
   /* --- Шрифты --- */
   --font-sans: 'Geologica Variable', 'Helvetica Neue', Arial, sans-serif;
@@ -152,6 +154,7 @@
   --accent-text: var(--signal);
   --on-accent: var(--graphite-900);
   --focus: var(--signal);
+  --danger: var(--alarm-300);
   color-scheme: dark;
 }
 
@@ -166,6 +169,7 @@
   --accent-text: var(--signal-ink);
   --on-accent: var(--graphite-900);
   --focus: var(--signal-ink);
+  --danger: var(--alarm-700);
   color-scheme: light;
 }
 
