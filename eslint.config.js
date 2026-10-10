@@ -12,4 +12,10 @@ export default tseslint.config(
     plugins: { 'react-hooks': reactHooks },
     rules: { ...reactHooks.configs.recommended.rules },
   },
+  {
+    // В Playwright `({}, testInfo) => …` — обычная запись, когда фикстуры не нужны.
+    files: ['tests/**/*.ts'],
+    languageOptions: { globals: globals.node },
+    rules: { 'no-empty-pattern': 'off', 'react-hooks/rules-of-hooks': 'off' },
+  },
 );
