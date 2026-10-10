@@ -2,8 +2,43 @@
   max-width: 12ch;
 }
 
-.list {
+.grid {
+  row-gap: var(--space-8);
+  margin-top: var(--space-block);
+}
+
+.brief {
+  margin-top: var(--space-4);
+}
+
+.brief li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-top: var(--border-width) solid var(--line);
+}
+
+.briefIndex {
+  padding-top: 0.3em;
+  color: var(--accent-text);
+}
+
+.channels {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+}
+
+.links {
   display: grid;
   gap: var(--space-3);
-  margin-top: var(--space-8);
+}
+
+.placeholder {
+  margin-top: var(--space-4);
+  padding: var(--space-5);
+  border: var(--border-width) dashed var(--line-strong);
+  color: var(--fg-muted);
 }

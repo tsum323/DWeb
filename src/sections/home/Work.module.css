@@ -1,0 +1,18 @@
+.intro {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 64em) {
+  .intro {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: var(--grid-gap);
+  }
+}
+
+.list {
+  display: grid;
+  gap: var(--space-section);
+  margin-top: var(--space-block);
+}

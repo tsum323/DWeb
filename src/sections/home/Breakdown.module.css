@@ -1,0 +1,111 @@
+.section {
+  padding-block: var(--space-section);
+}
+
+.head {
+  padding-top: var(--space-3);
+  border-top: var(--border-width) solid var(--line);
+}
+
+.title {
+  max-width: 18ch;
+  margin-top: var(--space-block);
+}
+
+/* Три шага: на телефоне — столбиком, на десктопе — в ряд, как графы таблицы. */
+.steps {
+  display: grid;
+  margin-top: var(--space-block);
+  border-top: var(--border-width) solid var(--line-strong);
+}
+
+.step {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  padding-block: var(--space-6);
+  border-bottom: var(--border-width) solid var(--line);
+}
+
+.stepIndex {
+  color: var(--accent-text);
+}
+
+@media (min-width: 64em) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: var(--border-width) solid var(--line);
+  }
+
+  .step {
+    padding: var(--space-6) var(--space-6) var(--space-7) 0;
+    border-bottom: 0;
+  }
+
+  .step + .step {
+    padding-left: var(--space-6);
+    border-left: var(--border-width) solid var(--line);
+  }
+}
+
+.gallery {
+  row-gap: var(--space-7);
+  margin-top: var(--space-block);
+  align-items: start;
+}
+
+.tall {
+  justify-self: start;
+}
+
+@media (min-width: 64em) {
+  .tall {
+    margin-top: var(--space-10);
+  }
+}
+
+.caption {
+  margin-top: var(--space-3);
+}
+
+.features {
+  row-gap: var(--space-8);
+  margin-top: var(--space-block);
+}
+
+.featureList {
+  margin-top: var(--space-5);
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  border-top: var(--border-width) solid var(--line);
+}
+
+.feature p + p {
+  margin-top: var(--space-2);
+}
+
+.featureIndex {
+  padding-top: 0.45em;
+  color: var(--accent-text);
+}
+
+.planned {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  border: var(--border-width) dashed var(--line-strong);
+}
+
+.plannedTitle {
+  font-weight: 500;
+}
+
+.actions {
+  margin-top: var(--space-block);
+}

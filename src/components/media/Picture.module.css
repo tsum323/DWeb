@@ -1,0 +1,9 @@
+.picture {
+  display: block;
+  background-color: var(--bg-raised); /* видно, пока изображение загружается */
+}
+
+.picture img {
+  width: 100%;
+  height: auto;
+}
