@@ -1,6 +1,7 @@
 # Проверка сайта при каждом PR и каждом изменении main:
 # типы, линтер, форматирование, сборка и автотесты в Chromium и WebKit (движок Safari).
-name: Проверка
+# После успешной проверки main сайт автоматически публикуется на GitHub Pages.
+name: Проверка и публикация
 
 on:
   pull_request:
@@ -9,7 +10,12 @@ on:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  # Для PR старый запуск отменяется новым; запуски main (с публикацией) не прерываются.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# По умолчанию — только чтение. Право записи есть лишь у шага публикации.
+permissions:
+  contents: read
 
 jobs:
   check:
@@ -17,9 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -46,3 +52,50 @@ jobs:
           name: playwright-report
           path: playwright-report
           retention-days: 7
+
+  publish:
+    name: Публикация на GitHub Pages
+    # Только для main и только если проверка прошла.
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    # Публикации идут строго по очереди, без отмены уже начатой.
+    concurrency:
+      group: publish
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Установка зависимостей
+        run: npm ci
+
+      - name: Сборка
+        run: npm run build
+
+      # GitHub Pages раздаёт сайт из ветки gh-pages (Settings → Pages → Deploy from a branch).
+      # Ветка содержит только готовую сборку; история сохраняется — каждая публикация отдельным коммитом.
+      - name: Выкладка в ветку gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch --depth=1 origin gh-pages:refs/remotes/origin/gh-pages
+          git worktree add ../site origin/gh-pages
+          # Полная замена содержимого: удалённые со страниц файлы не должны оставаться в публикации.
+          find ../site -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R dist/. ../site/
+          cd ../site
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Сайт не изменился — публиковать нечего."
+            exit 0
+          fi
+          git commit -m "Публикация из main (${GITHUB_SHA::7})"
+          git push origin HEAD:gh-pages
