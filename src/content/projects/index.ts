@@ -13,3 +13,8 @@ export function getNextProject(slug: string) {
   const i = projects.findIndex((p) => p.slug === slug);
   return projects[(i + 1) % projects.length];
 }
+
+/** Проект для подробного разбора на главной. */
+export function getFeaturedProject() {
+  return projects.find((p) => p.featured) ?? projects[0];
+}

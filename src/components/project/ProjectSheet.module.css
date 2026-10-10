@@ -1,0 +1,123 @@
+.sheet {
+  padding-top: var(--space-5);
+  border-top: var(--border-width) solid var(--line-strong);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+}
+
+.number {
+  color: var(--accent-text);
+}
+
+.title {
+  grid-column: 1 / -1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 40em) {
+  .head {
+    grid-template-columns: auto 1fr auto;
+  }
+  .title {
+    grid-column: auto;
+  }
+  .tags {
+    grid-column: auto;
+  }
+}
+
+.titleLink {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  background-position: 0 92%;
+  transition: background-size var(--dur-slow) var(--ease-out);
+}
+
+/* Композиция: десктоп на 10 колонок, телефон наезжает на его правый нижний угол. */
+.visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  margin-top: var(--space-7);
+}
+
+.desktop {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.mobile {
+  grid-column: 3 / span 2;
+  grid-row: 2;
+  margin-top: calc(var(--space-9) * -1);
+  box-shadow: 0 0 0 var(--space-2) var(--bg); /* «вырез» в фоне вокруг телефона */
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+@media (min-width: 40em) {
+  .mobile {
+    grid-column: 6 / span 3;
+    margin-top: calc(var(--space-10) * -1);
+  }
+}
+
+@media (min-width: 64em) {
+  .desktop {
+    grid-column: 1 / span 10;
+  }
+
+  .mobile {
+    grid-column: 10 / span 3;
+    grid-row: 1;
+    align-self: end;
+    margin-top: 0;
+    margin-bottom: calc(var(--space-9) * -1);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sheet:has(.visual:hover) .titleLink,
+  .titleLink:hover {
+    background-size: 100% 2px;
+  }
+
+  .visual:hover .desktop {
+    transform: translateY(calc(var(--space-2) * -1));
+  }
+
+  .visual:hover .mobile {
+    transform: translateY(calc(var(--space-4) * -1));
+  }
+}
+
+.info {
+  row-gap: var(--space-7);
+  margin-top: var(--space-8);
+}
+
+@media (min-width: 64em) {
+  .info {
+    margin-top: calc(var(--space-9) + var(--space-8));
+  }
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}

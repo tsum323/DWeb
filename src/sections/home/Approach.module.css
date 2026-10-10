@@ -1,0 +1,96 @@
+.title {
+  max-width: 16ch;
+}
+
+/* Шкала этапов: вертикальная линия на телефоне, горизонтальная — на десктопе. */
+.process {
+  position: relative;
+  display: grid;
+  margin-top: var(--space-block);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: 0 0 var(--space-8) var(--space-7);
+  border-left: var(--border-width) solid var(--line-strong);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.node {
+  position: absolute;
+  top: 0.15rem;
+  left: -0.3125rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: var(--bg);
+  border: var(--border-width) solid var(--accent);
+}
+
+.step:first-child .node {
+  background-color: var(--accent);
+}
+
+.stepIndex {
+  color: var(--accent-text);
+}
+
+.result {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 64em) {
+  .process {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap);
+  }
+
+  .step {
+    padding: var(--space-7) 0 0;
+    border-left: 0;
+    border-top: var(--border-width) solid var(--line-strong);
+  }
+
+  .node {
+    top: -0.3125rem;
+    left: 0;
+  }
+}
+
+.bottom {
+  display: grid;
+  gap: var(--space-block) var(--grid-gap);
+  margin-top: var(--space-section);
+  padding-top: var(--space-6);
+  border-top: var(--border-width) solid var(--line);
+}
+
+@media (min-width: 64em) {
+  .bottom {
+    grid-template-columns: 7fr 4fr;
+    column-gap: calc(var(--grid-gap) * 4);
+  }
+}
+
+.principles {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-5);
+}
+
+.principles li {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}

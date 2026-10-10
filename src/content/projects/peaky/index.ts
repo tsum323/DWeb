@@ -1,4 +1,8 @@
 import type { Project } from '../../schema';
+import desktopHome from './media/desktop-home.webp?w=640;1080;1600;2400&format=avif;webp&as=picture';
+import desktopPrices from './media/desktop-prices.webp?w=640;1080;1600&format=avif;webp&as=picture';
+import mobileHome from './media/mobile-home.webp?w=390;780;1170&format=avif;webp&as=picture';
+import mobileBooking from './media/mobile-booking.webp?w=390;780;1170&format=avif;webp&as=picture';
 
 /*
  * Источник фактов — исходный код и README репозитория tsum323/peaky-barbers.
@@ -12,8 +16,8 @@ export const peaky: Project = {
   type: 'Сайт барбершопа',
   year: 2026,
   status: { kind: 'demo', label: 'Демо-версия, согласование с владельцем' },
-  role: ['Структура', 'Дизайн', 'Вёрстка'],
-  scope: ['6 страниц и 404', 'Адаптивная вёрстка', 'Окно записи', 'Базовое SEO'],
+  role: ['структура', 'дизайн', 'вёрстка'],
+  scope: ['6 страниц и 404', 'адаптивная вёрстка', 'окно записи', 'базовое SEO'],
   stack: ['HTML', 'CSS', 'JavaScript'],
   live: { href: 'https://tsum323.github.io/peaky-barbers/', label: 'Открыть демо-версию' },
   theme: { surface: 'dark' },
@@ -91,6 +95,60 @@ export const peaky: Project = {
     'Сайт ещё не запущен для клиентов барбершопа, поэтому бизнес-результатов пока нет.',
     'Онлайн-записи с выбором времени нет: запись идёт через звонок или WhatsApp.',
   ],
+  featured: true,
+  teaser: {
+    task: 'За пару экранов объяснить, что это за место, показать услуги с ценами и дать записаться в одно касание.',
+    solution:
+      'Тёмная палитра с латунным акцентом, крупная антиква в заголовках и короткие тексты. «Записаться» есть в шапке, на первом экране и в конце каждой страницы.',
+    build:
+      'Шесть статичных страниц на HTML, CSS и JavaScript без сборки. Окно записи со звонком и WhatsApp, адаптив до 320 px.',
+  },
+  media: {
+    cover: {
+      desktop: {
+        image: {
+          picture: desktopHome,
+          alt: 'Главная страница Peaky Barbers на десктопе: заголовок «Стиль начинается с деталей», кнопки «Записаться» и «Смотреть работы», фото барбера за работой.',
+        },
+        label: 'peaky / главная',
+        viewport: 1440,
+        device: 'desktop',
+        caption: 'Первый экран на десктопе',
+      },
+      mobile: {
+        image: {
+          picture: mobileHome,
+          alt: 'Главная страница Peaky Barbers на телефоне: меню, заголовок и кнопка «Записаться».',
+        },
+        label: 'peaky / главная',
+        viewport: 390,
+        device: 'mobile',
+        caption: 'Первый экран на телефоне',
+      },
+    },
+    gallery: [
+      {
+        image: {
+          picture: desktopPrices,
+          alt: 'Страница услуг Peaky Barbers: список услуг с номерами, описаниями и ценами от 800 до 1900 рублей.',
+        },
+        label: 'peaky / услуги',
+        viewport: 1440,
+        device: 'desktop',
+        caption: 'Прайс на странице услуг',
+      },
+      {
+        image: {
+          picture: mobileBooking,
+          alt: 'Окно записи Peaky Barbers на телефоне: кнопки «Позвонить» и «WhatsApp», адрес барбершопа.',
+        },
+        label: 'peaky / запись',
+        viewport: 390,
+        device: 'mobile',
+        caption: 'Окно записи на телефоне',
+      },
+    ],
+  },
   seo: {
     title: 'Peaky Barbers: сайт барбершопа',
     description:

@@ -59,8 +59,8 @@ a {
   text-decoration: none;
 }
 
-ul[role='list'],
-ol[role='list'] {
+/* :where() обнуляет специфичность — классы компонентов могут задавать отступы. */
+:where(ul[role='list'], ol[role='list']) {
   list-style: none;
   padding: 0;
 }

@@ -4,6 +4,7 @@ import { Readout } from '../../components/blueprint/Readout';
 import { Stamp } from '../../components/blueprint/Stamp';
 import { Container } from '../../components/layout/Container';
 import { Col, Grid } from '../../components/layout/Grid';
+import { Actions } from '../../components/ui/Actions';
 import { Button } from '../../components/ui/Button';
 import { SectionLabel } from '../../components/ui/SectionLabel';
 import styles from './Hero.module.css';
@@ -27,12 +28,12 @@ export function Hero() {
                 Проектирую и разрабатываю сайты для небольшого бизнеса: от структуры и дизайна до адаптивной
                 вёрстки и запуска.
               </p>
-              <div className={styles.actions}>
+              <Actions>
                 <Button to="/#work">Смотреть работы</Button>
                 <Button to="/#contact" variant="secondary">
                   Обсудить проект
                 </Button>
-              </div>
+              </Actions>
             </Col>
             <Col span={{ sm: 4, md: 8, lg: 4 }} start={{ lg: 9 }}>
               <Stamp
