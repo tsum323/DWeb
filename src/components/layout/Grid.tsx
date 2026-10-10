@@ -18,7 +18,14 @@ type ColProps<T extends ElementType> = {
   start?: Responsive;
 } & ComponentPropsWithoutRef<T>;
 
-export function Col<T extends ElementType = 'div'>({ as, span, start, className, style, ...rest }: ColProps<T>) {
+export function Col<T extends ElementType = 'div'>({
+  as,
+  span,
+  start,
+  className,
+  style,
+  ...rest
+}: ColProps<T>) {
   const Tag = as ?? 'div';
   const vars = {
     '--span-sm': span?.sm,
