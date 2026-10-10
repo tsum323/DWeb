@@ -1,0 +1,15 @@
+.page {
+  display: flex;
+  align-items: center;
+  min-height: min(calc(100svh - 4rem), 48rem);
+  padding-block: var(--space-block);
+}
+
+.title {
+  max-width: 14ch;
+  margin-block: var(--space-6);
+}
+
+.actions {
+  margin-top: var(--space-7);
+}

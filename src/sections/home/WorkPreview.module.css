@@ -1,0 +1,27 @@
+.list {
+  margin-top: var(--space-block);
+}
+
+.row {
+  row-gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: var(--border-width) solid var(--line);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.arrow {
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover .arrow {
+    transform: translateX(6px);
+  }
+}

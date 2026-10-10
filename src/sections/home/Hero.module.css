@@ -1,0 +1,58 @@
+.hero {
+  display: flex;
+  /* На высоких экранах (iPad вертикально) первый экран не растягивается в пустоту. */
+  min-height: min(calc(100svh - 4rem), 60rem);
+  padding-block: var(--space-block) var(--space-6);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-block);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.title {
+  max-width: 14ch; /* 2–3 строки на любом экране, без «лесенки» из одного слова */
+  margin-top: var(--space-6);
+}
+
+.grid {
+  row-gap: var(--space-7);
+  align-items: end;
+  margin-top: var(--space-7);
+}
+
+.lead {
+  color: var(--fg-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--line);
+}
+
+.next {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-block: calc(var(--space-3) * -1);
+}
