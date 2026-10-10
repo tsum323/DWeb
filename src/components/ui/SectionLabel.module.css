@@ -1,0 +1,13 @@
+.label {
+  display: inline-flex;
+  gap: 0.6em;
+  color: var(--fg);
+}
+
+.index {
+  color: var(--accent-text);
+}
+
+.slash {
+  color: var(--fg-muted);
+}

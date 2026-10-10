@@ -1,0 +1,24 @@
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.strong {
+  font-weight: 750;
+  font-variation-settings: 'SHRP' 100;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.mark {
+  width: 0.26em;
+  height: 0.26em;
+  margin-left: 0.12em;
+  background-color: var(--accent-text); /* на светлом фоне салатовый не виден */
+}

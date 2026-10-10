@@ -1,0 +1,38 @@
+.stamp {
+  border: var(--border-width) solid var(--line-strong);
+  font-size: var(--text-small);
+}
+
+.title {
+  padding: var(--space-4);
+  border-bottom: var(--border-width) solid var(--line-strong);
+  font-size: var(--text-h3);
+  font-weight: 550;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.015em;
+}
+
+.rows {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.row {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  min-width: 0;
+}
+
+.row:nth-child(n + 3) {
+  border-top: var(--border-width) solid var(--line);
+}
+
+.row:nth-child(odd) {
+  border-right: var(--border-width) solid var(--line);
+}
+
+.row dd {
+  overflow-wrap: anywhere;
+}

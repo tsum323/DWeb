@@ -1,0 +1,39 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem; /* 44px — цель касания */
+  padding-inline: var(--space-1);
+  color: var(--fg);
+}
+
+/* Квадрат-индикатор: пустой — выключено, залитый — включено. */
+.box {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: var(--border-width) solid var(--fg-muted);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.toggle[aria-pressed='true'] .box {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.key {
+  display: none;
+  padding: 0 0.4em;
+  border: var(--border-width) solid var(--line-strong);
+  border-radius: var(--radius-1);
+  font-family: inherit;
+  color: var(--fg-muted);
+}
+
+/* Подсказка про клавишу нужна только тем, у кого есть клавиатура и мышь. */
+@media (hover: hover) and (pointer: fine) {
+  .key {
+    display: inline-block;
+  }
+}
