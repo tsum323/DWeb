@@ -8,13 +8,28 @@ export type PageMeta = {
   path: string;
   type: 'website' | 'article';
   noindex: boolean;
+  /** Картинка превью ссылки (из public/og), путь от корня сайта. */
+  image: { path: string; alt: string };
+  /** Структурированные данные для поисковиков (schema.org). */
+  jsonLd?: Record<string, unknown>;
 };
+
+const homeImage = { path: '/og/home.png', alt: 'DWeb — сайты для бизнеса, продуманные от сетки до кода' };
 
 const home: Omit<PageMeta, 'path'> = {
   title: 'DWeb — сайты для бизнеса',
   description: site.description,
   type: 'website',
   noindex: !site.indexable,
+  image: homeImage,
+  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: site.name,
+    url: `${site.url}/`,
+    description: site.description,
+    inLanguage: 'ru',
+  },
 };
 
 /** Метаданные страницы по её пути. Используются и при пререндере, и в браузере. */
@@ -31,6 +46,18 @@ export function getMeta(path: string): PageMeta {
       path: `/work/${project.slug}`,
       type: 'article',
       noindex: !site.indexable,
+      image: { path: `/og/${project.slug}.png`, alt: `${project.title} — ${project.type.toLowerCase()}` },
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        name: project.title,
+        description: project.seo.description,
+        url: absoluteUrl(`/work/${project.slug}`),
+        dateCreated: String(project.year),
+        inLanguage: 'ru',
+        keywords: project.stack.join(', '),
+        creator: { '@type': 'Organization', name: site.name, url: `${site.url}/` },
+      },
     };
   }
 
@@ -40,6 +67,7 @@ export function getMeta(path: string): PageMeta {
     path: clean,
     type: 'website',
     noindex: true,
+    image: homeImage,
   };
 }
 

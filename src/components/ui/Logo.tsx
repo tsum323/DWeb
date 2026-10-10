@@ -7,7 +7,7 @@ import styles from './Logo.module.css';
  */
 export function Logo({ className }: { className?: string }) {
   return (
-    <span className={[styles.logo, className].filter(Boolean).join(' ')} aria-label="DWeb">
+    <span className={[styles.logo, className].filter(Boolean).join(' ')} role="img" aria-label="DWeb">
       <span aria-hidden="true" className={styles.strong}>
         DW
       </span>

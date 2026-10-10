@@ -19,7 +19,7 @@ export function Hero() {
             <SectionLabel>DWeb — сайты и интерфейсы</SectionLabel>
             <GridToggle />
           </div>
-          <h1 id="hero-title" className={`t-display ${styles.title}`} data-reveal="lines">
+          <h1 id="hero-title" className={`t-display ${styles.title}`} data-reveal="lines" data-reveal-intro>
             Сайты для бизнеса&nbsp;— продуманные от&nbsp;сетки до&nbsp;кода
           </h1>
           <Grid className={styles.grid} data-reveal="stagger">

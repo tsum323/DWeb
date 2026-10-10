@@ -20,11 +20,13 @@ type Options = {
   skipInView: boolean;
   /** Переход между страницами идёт через View Transitions — обложку не трогаем. */
   viewTransition: boolean;
+  /** Первая загрузка сайта: элементы с data-reveal-intro уже анимирует CSS. */
+  firstRun: boolean;
 };
 
 const isPhone = () => window.matchMedia('(max-width: 39.99em)').matches;
 
-export function animatePage(root: HTMLElement, { skipInView, viewTransition }: Options) {
+export function animatePage(root: HTMLElement, { skipInView, viewTransition, firstRun }: Options) {
   const distance = isPhone() ? 16 : 28;
 
   const ctx = gsap.context(() => {
@@ -36,6 +38,7 @@ export function animatePage(root: HTMLElement, { skipInView, viewTransition }: O
 
       const inView = el.getBoundingClientRect().top < window.innerHeight;
       if ((skipInView && inView) || (viewTransition && el.closest('[data-vt-skip]'))) return;
+      if (firstRun && el.hasAttribute('data-reveal-intro')) return;
 
       const scrollTrigger = { trigger: el, start: 'top 88%', once: true };
 
