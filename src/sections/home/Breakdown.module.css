@@ -4,7 +4,6 @@
 
 .head {
   padding-top: var(--space-3);
-  border-top: var(--border-width) solid var(--line);
 }
 
 .title {

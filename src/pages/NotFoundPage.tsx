@@ -8,7 +8,7 @@ export function NotFoundPage() {
     <section data-surface="dark" className={styles.page} aria-labelledby="nf-title">
       <Container>
         <SectionLabel index="404">Лист не найден</SectionLabel>
-        <h1 id="nf-title" className={`t-display ${styles.title}`}>
+        <h1 id="nf-title" className={`t-display ${styles.title}`} data-reveal="lines">
           Такой страницы нет на&nbsp;чертеже
         </h1>
         <p className="t-body-l t-muted t-measure">

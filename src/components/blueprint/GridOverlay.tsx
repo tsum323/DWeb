@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { useGridOverlay } from '../../lib/gridOverlay';
 import styles from './GridOverlay.module.css';
 
@@ -11,7 +12,7 @@ export function GridOverlay() {
     <div className={styles.overlay} aria-hidden="true">
       <div className={styles.columns}>
         {Array.from({ length: MAX_COLUMNS }, (_, i) => (
-          <span key={i} className={styles.column}>
+          <span key={i} className={styles.column} style={{ '--i': i } as CSSProperties}>
             <span className={styles.number}>{String(i + 1).padStart(2, '0')}</span>
           </span>
         ))}

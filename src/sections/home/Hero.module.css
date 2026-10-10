@@ -40,7 +40,6 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   padding-top: var(--space-4);
-  border-top: var(--border-width) solid var(--line);
 }
 
 .next {

@@ -57,7 +57,7 @@ export function CaseOutro({ project }: { project: Project }) {
           </div>
 
           <div className={styles.cta}>
-            <h2 id="outro-title" className="t-h1">
+            <h2 id="outro-title" className="t-h1" data-reveal="lines">
               Нужен похожий сайт?
             </h2>
             <p className="t-body-l t-muted t-measure">

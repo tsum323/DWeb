@@ -6,6 +6,18 @@
     <meta name="theme-color" content="#17191B" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <!--app-head-->
+    <script>
+      /* Пока движок анимаций загружается, анимируемые элементы скрыты (без сдвига вёрстки).
+         Страховка: через 2,5 с всё показывается, даже если JavaScript не загрузился. */
+      (function () {
+        if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+        var root = document.documentElement;
+        root.classList.add('motion-pending');
+        setTimeout(function () {
+          root.classList.remove('motion-pending');
+        }, 2500);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"><!--app-html--></div>

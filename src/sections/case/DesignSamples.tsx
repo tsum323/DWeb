@@ -7,7 +7,7 @@ export function DesignSamples({ design }: { design: NonNullable<Project['design'
     <div className={styles.samples}>
       <div>
         <h3 className="t-mono">Палитра</h3>
-        <ul role="list" className={styles.palette}>
+        <ul role="list" className={styles.palette} data-reveal="stagger">
           {design.palette.map((c) => (
             <li key={c.hex} className={styles.color}>
               <span className={styles.chip} style={{ backgroundColor: c.hex }} />
@@ -20,7 +20,7 @@ export function DesignSamples({ design }: { design: NonNullable<Project['design'
       </div>
       <div>
         <h3 className="t-mono">Шрифты</h3>
-        <ul role="list" className={styles.fonts}>
+        <ul role="list" className={styles.fonts} data-reveal="stagger">
           {design.fonts.map((f) => (
             <li key={f.name} className={styles.font}>
               <div className={styles.fontMeta}>

@@ -27,7 +27,7 @@ export function Chapter({ id, index, label, title, body, surface = 'light', asid
     <Section id={id} surface={surface} index={index} label={label} labelledBy={titleId}>
       <Grid className={styles.grid}>
         <Col span={{ sm: 4, md: 8, lg: 5 }}>
-          <h2 id={titleId} className={`t-h2 ${styles.title}`}>
+          <h2 id={titleId} className={`t-h2 ${styles.title}`} data-reveal="lines">
             {typograph(title)}
           </h2>
         </Col>

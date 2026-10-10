@@ -10,11 +10,11 @@ import styles from './Services.module.css';
 export function Services() {
   return (
     <Section id="services" surface="light" index="02" label="Услуги" labelledBy="services-title">
-      <h2 id="services-title" className={`t-h2 ${styles.title}`}>
+      <h2 id="services-title" className={`t-h2 ${styles.title}`} data-reveal="lines">
         Что делаю и&nbsp;что развиваю
       </h2>
 
-      <ol role="list" className={styles.list}>
+      <ol role="list" className={styles.list} data-reveal="stagger">
         {doing.map((s, i) => {
           const example = s.example ? getProject(s.example) : undefined;
           return (
@@ -35,7 +35,7 @@ export function Services() {
 
       <div className={styles.learning}>
         <h3 className="t-mono">Развиваю</h3>
-        <ul role="list" className={styles.learningList}>
+        <ul role="list" className={styles.learningList} data-reveal="stagger">
           {learning.map((s) => (
             <li key={s.title} className={styles.learningItem}>
               <p className={styles.learningTitle}>{s.title}</p>

@@ -8,7 +8,7 @@ export function Work() {
   return (
     <Section id="work" surface="light" index="01" label="Работы" labelledBy="work-title">
       <div className={styles.intro}>
-        <h2 id="work-title" className="t-h2">
+        <h2 id="work-title" className="t-h2" data-reveal="lines">
           Избранные работы
         </h2>
         <p className="t-body-l t-muted t-measure">

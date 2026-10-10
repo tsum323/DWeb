@@ -28,7 +28,7 @@ export function ProjectSheet({ project, index }: ProjectSheetProps) {
     <article className={styles.sheet} aria-labelledby={`${project.slug}-title`}>
       <header className={styles.head}>
         <span className={`t-mono ${styles.number}`}>{number}</span>
-        <h3 id={`${project.slug}-title`} className={`t-h1 ${styles.title}`}>
+        <h3 id={`${project.slug}-title`} className={`t-h1 ${styles.title}`} data-reveal="lines">
           <Link to={caseUrl} className={styles.titleLink}>
             {project.title}
           </Link>
@@ -47,10 +47,10 @@ export function ProjectSheet({ project, index }: ProjectSheetProps) {
 
       {/* Изображения дублируют ссылку заголовка, поэтому скрыты от клавиатуры и дикторов как ссылка. */}
       <Link to={caseUrl} className={styles.visual} tabIndex={-1} aria-hidden="true">
-        <CoverVisual cover={cover} />
+        <CoverVisual cover={cover} viewTransitionName={`cover-${project.slug}`} />
       </Link>
 
-      <Grid className={styles.info}>
+      <Grid className={styles.info} data-reveal="stagger">
         <Col span={{ sm: 4, md: 8, lg: 6 }}>
           <p className="t-body-l t-measure">{typograph(project.summary)}</p>
           <ul role="list" className={styles.stack} aria-label="Технологии">

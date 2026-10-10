@@ -26,14 +26,14 @@ export function Breakdown() {
   return (
     <section data-surface="dark" className={styles.section} aria-labelledby="breakdown-title">
       <Container>
-        <div className={styles.head}>
+        <div className={`${styles.head} draw-line`} data-reveal="draw">
           <SectionLabel index="01.1">Разбор</SectionLabel>
         </div>
-        <h2 id="breakdown-title" className={`t-h2 ${styles.title}`}>
+        <h2 id="breakdown-title" className={`t-h2 ${styles.title}`} data-reveal="lines">
           Как устроен {project.title}
         </h2>
 
-        <ol role="list" className={styles.steps}>
+        <ol role="list" className={styles.steps} data-reveal="stagger">
           {steps.map((s, i) => (
             <li key={s.label} className={styles.step}>
               <p className="t-mono">

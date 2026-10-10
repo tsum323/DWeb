@@ -19,10 +19,10 @@ export function Hero() {
             <SectionLabel>DWeb — сайты и интерфейсы</SectionLabel>
             <GridToggle />
           </div>
-          <h1 id="hero-title" className={`t-display ${styles.title}`}>
-            Сайты для бизнеса&nbsp;— продуманные от сетки до&nbsp;кода
+          <h1 id="hero-title" className={`t-display ${styles.title}`} data-reveal="lines">
+            Сайты для бизнеса&nbsp;— продуманные от&nbsp;сетки до&nbsp;кода
           </h1>
-          <Grid className={styles.grid}>
+          <Grid className={styles.grid} data-reveal="stagger">
             <Col span={{ sm: 4, md: 8, lg: 7 }}>
               <p className={`t-body-l t-measure ${styles.lead}`}>
                 Проектирую и разрабатываю сайты для небольшого бизнеса: от структуры и дизайна до адаптивной
@@ -47,7 +47,7 @@ export function Hero() {
             </Col>
           </Grid>
         </div>
-        <div className={styles.foot}>
+        <div className={`${styles.foot} draw-line`} data-reveal="draw">
           <Readout />
           <Link to="/#work" className={`t-mono t-muted ${styles.next}`}>
             ↓ 01 / Работы

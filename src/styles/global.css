@@ -32,6 +32,70 @@ body {
   outline: none;
 }
 
+/* --- Движение --- */
+
+/* Ожидание движка анимаций: элементы прозрачны, но занимают место в вёрстке
+   и остаются доступны экранным дикторам. */
+.motion-pending [data-reveal] {
+  opacity: 0;
+}
+
+/* Заголовки с построчной анимацией переносятся обычным способом, без balance:
+   SplitText не умеет «балансировать» строки, и после анимации заголовок
+   перестраивался бы в другое число строк — страница прыгала бы. */
+[data-reveal='lines'] {
+  text-wrap: wrap;
+}
+
+/* Линия «чертежа», которую прорисовывает анимация draw (0 → 1). */
+.draw-line {
+  position: relative;
+}
+
+.draw-line::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--border-width);
+  background-color: var(--line);
+  transform: scaleX(var(--draw, 1));
+  transform-origin: left;
+}
+
+/* Переход между страницами: шапка остаётся на месте, остальное плавно сменяется. */
+::view-transition-group(*) {
+  animation-duration: var(--dur-slow);
+  animation-timing-function: var(--ease-out);
+}
+
+::view-transition-old(root) {
+  animation: var(--dur-base) var(--ease-out) both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: var(--dur-slow) var(--ease-out) both vt-fade-in;
+}
+
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 /* Доступно для экранных дикторов, скрыто визуально. */
 .visually-hidden {
   position: absolute !important;
