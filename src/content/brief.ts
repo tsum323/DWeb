@@ -205,6 +205,6 @@ export type ContactMethodId = (typeof contactMethods)[number]['id'];
 /**
  * Куда отправлять анкету — адрес Cloudflare Worker, который пересылает её в Telegram
  * (код и инструкция — в worker/ и docs/BRIEF_TELEGRAM.md).
- * Пока адреса нет, анкета предлагает скопировать ответы и отправить их самостоятельно.
+ * Без адреса (undefined) анкета предлагает скопировать ответы и отправить их самостоятельно.
  */
-export const briefEndpoint: string | undefined = undefined;
+export const briefEndpoint: string | undefined = 'https://dweb-brief.kz55tps77p.workers.dev';

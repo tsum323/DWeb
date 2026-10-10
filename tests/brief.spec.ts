@@ -107,13 +107,34 @@ test.describe('анкета', () => {
     await page.getByRole('button', { name: 'Сохранить' }).click();
     await expect(summary).toContainText('В течение месяца');
 
-    // Пока отправка не подключена — текст заявки можно скопировать.
+    // Отправка: посредник подменён. Первая попытка — сбой, вторая — успех.
+    const bodies: { text: string; website: string }[] = [];
+    let fail = true;
+    await page.route(/workers\.dev/, async (route) => {
+      bodies.push(JSON.parse(route.request().postData() ?? '{}'));
+      await route.fulfill({ status: fail ? 500 : 200, body: fail ? '{"ok":false}' : '{"ok":true}' });
+    });
+
+    await page.getByRole('button', { name: 'Отправить' }).click();
+    await expect(page.getByRole('alert')).toContainText('Не получилось отправить');
+    // При сбое ответы не теряются: их можно скопировать.
     await page.getByText('Показать текст заявки').click();
     const text = await page.locator('details pre').textContent();
     expect(text).toContain('Заявка с сайта DWeb');
     expect(text).toContain('9. Сроки\n— В течение месяца');
     expect(text).toContain('Почта: client@example.com');
-    expect(errors).toEqual([]);
+
+    fail = false;
+    await page.getByRole('button', { name: 'Отправить ещё раз' }).click();
+    await expect(page.getByRole('heading', { name: 'Спасибо, заявка отправлена' })).toBeFocused();
+    expect(bodies).toHaveLength(2);
+    expect(bodies[1]).toEqual({ text, website: '' });
+
+    // После отправки черновик удалён: анкета начинается заново.
+    await page.reload();
+    await expect(page.getByText('Вопрос 01 из 09')).toBeVisible();
+    await expect(page.getByRole('radio', { name: /Красота и уход/ })).not.toBeChecked();
+    expect(errors.filter((e) => !e.includes('500'))).toEqual([]);
   });
 
   test('черновик сохраняется при обновлении страницы', async ({ page }) => {
