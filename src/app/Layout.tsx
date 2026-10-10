@@ -3,6 +3,7 @@ import { GridOverlay } from '../components/blueprint/GridOverlay';
 import { Footer } from '../components/site/Footer';
 import { Header } from '../components/site/Header';
 import { useGridShortcut } from '../lib/gridOverlay';
+import { useMotion, useViewTransitions } from '../motion/useMotion';
 import { useDocumentMeta } from '../seo/useDocumentMeta';
 import { ScrollManager } from './ScrollManager';
 import styles from './Layout.module.css';
@@ -11,6 +12,8 @@ import styles from './Layout.module.css';
 export function Layout() {
   useGridShortcut();
   useDocumentMeta();
+  useMotion();
+  useViewTransitions();
 
   return (
     <div id="top" className={styles.layout}>

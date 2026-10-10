@@ -7,10 +7,12 @@ type CoverVisualProps = {
   /** Обложка первого экрана кейса грузится сразу; в списке работ — по мере прокрутки. */
   priority?: boolean;
   className?: string;
+  /** Имя для перехода «карточка → обложка кейса». */
+  viewTransitionName?: string;
 };
 
 /** Композиция «десктоп + телефон»: телефон наезжает на правый нижний угол десктопа. */
-export function CoverVisual({ cover, priority, className }: CoverVisualProps) {
+export function CoverVisual({ cover, priority, className, viewTransitionName }: CoverVisualProps) {
   return (
     <div className={[styles.visual, className].filter(Boolean).join(' ')}>
       <Frame
@@ -18,12 +20,14 @@ export function CoverVisual({ cover, priority, className }: CoverVisualProps) {
         className={styles.desktop}
         sizes="(min-width: 64em) 75vw, 100vw"
         priority={priority}
+        viewTransitionName={viewTransitionName}
       />
       <Frame
         {...cover.mobile}
         className={styles.mobile}
         sizes="(min-width: 64em) 18vw, 40vw"
         priority={priority}
+        revealDelay={0.2}
       />
     </div>
   );

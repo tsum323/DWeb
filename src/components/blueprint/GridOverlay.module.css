@@ -19,6 +19,10 @@
 
 .column {
   position: relative;
+  /* Колонки «выдвигаются» сверху по одной — как раскладка листа на чертёжной доске. */
+  transform-origin: top;
+  animation: column-in var(--dur-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i) * 35ms);
   background-color: rgb(185 246 107 / 0.035);
   border-inline: var(--border-width) solid rgb(185 246 107 / 0.45);
 }
@@ -49,4 +53,10 @@
   font-family: var(--font-mono);
   font-size: 0.625rem;
   color: rgb(185 246 107 / 0.9);
+}
+
+@keyframes column-in {
+  from {
+    transform: scaleY(0);
+  }
 }

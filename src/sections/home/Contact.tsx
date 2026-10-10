@@ -17,11 +17,11 @@ export function Contact() {
 
   return (
     <Section id="contact" surface="light" index="04" label="Контакт" labelledBy="contact-title">
-      <h2 id="contact-title" className={`t-display ${styles.title}`}>
+      <h2 id="contact-title" className={`t-display ${styles.title}`} data-reveal="lines">
         Есть задача? Давайте обсудим
       </h2>
 
-      <Grid className={styles.grid}>
+      <Grid className={styles.grid} data-reveal="stagger">
         <Col span={{ sm: 4, md: 4, lg: 5 }}>
           <p className="t-mono t-muted">Что написать в первом сообщении</p>
           <ol role="list" className={styles.brief}>

@@ -8,5 +8,4 @@
   gap: var(--space-4);
   margin-bottom: var(--space-block);
   padding-top: var(--space-3);
-  border-top: var(--border-width) solid var(--line);
 }

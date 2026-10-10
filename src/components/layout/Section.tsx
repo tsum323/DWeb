@@ -26,7 +26,7 @@ export function Section({ id, surface, index, label, labelledBy, children, class
     >
       <Container>
         {label && (
-          <div className={styles.head}>
+          <div className={`${styles.head} draw-line`} data-reveal="draw">
             <SectionLabel index={index}>{label}</SectionLabel>
           </div>
         )}
