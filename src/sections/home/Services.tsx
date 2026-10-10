@@ -3,6 +3,7 @@ import { Section } from '../../components/layout/Section';
 import { Icon } from '../../components/ui/Icon';
 import { getProject } from '../../content/projects';
 import { doing, learning } from '../../content/services';
+import { typograph } from '../../lib/text';
 import styles from './Services.module.css';
 
 /** 02 / Услуги — что делаю (с примерами) и что развиваю (пунктиром — «в работе»). */
@@ -20,7 +21,7 @@ export function Services() {
             <li key={s.title} className={styles.row}>
               <span className={`t-mono ${styles.index}`}>{String(i + 1).padStart(2, '0')}</span>
               <h3 className={`t-h3 ${styles.name}`}>{s.title}</h3>
-              <p className={styles.text}>{s.text}</p>
+              <p className={styles.text}>{typograph(s.text)}</p>
               {example && (
                 <Link to={`/work/${example.slug}`} className={`t-mono ${styles.example}`}>
                   Пример: {example.title}
@@ -38,7 +39,7 @@ export function Services() {
           {learning.map((s) => (
             <li key={s.title} className={styles.learningItem}>
               <p className={styles.learningTitle}>{s.title}</p>
-              <p className="t-small t-muted">{s.text}</p>
+              <p className="t-small t-muted">{typograph(s.text)}</p>
             </li>
           ))}
         </ul>

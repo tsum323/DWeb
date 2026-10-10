@@ -1,9 +1,11 @@
 import { Container } from '../../components/layout/Container';
 import { Col, Grid } from '../../components/layout/Grid';
 import { Frame } from '../../components/media/Frame';
+import { Features } from '../../components/project/Features';
 import { Button } from '../../components/ui/Button';
 import { SectionLabel } from '../../components/ui/SectionLabel';
 import { getFeaturedProject } from '../../content/projects';
+import { typograph } from '../../lib/text';
 import styles from './Breakdown.module.css';
 
 /**
@@ -14,8 +16,6 @@ export function Breakdown() {
   const project = getFeaturedProject();
   if (!project) return null;
 
-  const shipped = project.features.filter((f) => f.status === 'shipped');
-  const planned = project.features.filter((f) => f.status === 'planned');
   const steps = [
     { label: 'Задача', text: project.teaser.task },
     { label: 'Решение', text: project.teaser.solution },
@@ -39,7 +39,7 @@ export function Breakdown() {
               <p className="t-mono">
                 <span className={styles.stepIndex}>{String(i + 1).padStart(2, '0')}</span> {s.label}
               </p>
-              <p className="t-body-l">{s.text}</p>
+              <p className="t-body-l">{typograph(s.text)}</p>
             </li>
           ))}
         </ol>
@@ -57,35 +57,7 @@ export function Breakdown() {
           </Grid>
         )}
 
-        <Grid className={styles.features}>
-          <Col span={{ sm: 4, md: 8, lg: 7 }}>
-            <h3 className="t-mono">Реализовано</h3>
-            <ol role="list" className={styles.featureList}>
-              {shipped.map((f, i) => (
-                <li key={f.title} className={styles.feature}>
-                  <span className={`t-mono ${styles.featureIndex}`}>{String(i + 1).padStart(2, '0')}</span>
-                  <div>
-                    <p className="t-h3">{f.title}</p>
-                    <p className="t-muted">{f.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Col>
-          {planned.length > 0 && (
-            <Col span={{ sm: 4, md: 8, lg: 4 }} start={{ lg: 9 }}>
-              <h3 className="t-mono">Следующие шаги</h3>
-              <ul role="list" className={styles.planned}>
-                {planned.map((f) => (
-                  <li key={f.title}>
-                    <p className={styles.plannedTitle}>{f.title}</p>
-                    <p className="t-small t-muted">{f.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-          )}
-        </Grid>
+        <Features features={project.features} className={styles.features} />
 
         <div className={styles.actions}>
           <Button to={`/work/${project.slug}`}>Полный кейс</Button>

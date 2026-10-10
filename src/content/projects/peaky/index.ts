@@ -2,6 +2,7 @@ import type { Project } from '../../schema';
 import desktopHome from './media/desktop-home.webp?w=640;1080;1600;2400&format=avif;webp&as=picture';
 import desktopPrices from './media/desktop-prices.webp?w=640;1080;1600&format=avif;webp&as=picture';
 import mobileHome from './media/mobile-home.webp?w=390;780;1170&format=avif;webp&as=picture';
+import './fonts/fonts.css';
 import mobileBooking from './media/mobile-booking.webp?w=390;780;1170&format=avif;webp&as=picture';
 
 /*
@@ -32,7 +33,8 @@ export const peaky: Project = {
     concept: {
       title: 'Концепция и дизайн',
       body: [
-        'Тёмная палитра с латунным акцентом и пара шрифтов Playfair Display и Manrope: антиква задаёт характер классического барбершопа, гротеск отвечает за читаемость цен и контактов.',
+        'Тёплый «табачный» тёмный фон — как морёное дерево в зале, и латунный акцент — как бритвы и фурнитура 1920-х. Палитра задаёт атмосферу места ещё до того, как прочитан первый заголовок.',
+        'Антиква Playfair Display с курсивом в заголовках даёт характер классического барбершопа, гротеск Manrope отвечает за читаемость цен, адреса и телефона.',
       ],
     },
     implementation: {
@@ -95,6 +97,30 @@ export const peaky: Project = {
     'Сайт ещё не запущен для клиентов барбершопа, поэтому бизнес-результатов пока нет.',
     'Онлайн-записи с выбором времени нет: запись идёт через звонок или WhatsApp.',
   ],
+  design: {
+    palette: [
+      { name: 'Табачный', hex: '#0E0C0A', role: 'Фон страниц' },
+      { name: 'Поверхность', hex: '#17130F', role: 'Карточки и окно записи' },
+      { name: 'Латунь', hex: '#C6A46A', role: 'Акцент: кнопки, подписи, цены' },
+      { name: 'Кремовый', hex: '#F2ECE1', role: 'Основной текст' },
+      { name: 'Приглушённый', hex: '#A0968A', role: 'Вторичный текст' },
+    ],
+    fonts: [
+      {
+        name: 'Playfair Display',
+        family: "'Peaky Playfair', Georgia, serif",
+        role: 'Заголовки, курсив для акцентов',
+        sample: 'Стиль начинается с деталей.',
+        italic: true,
+      },
+      {
+        name: 'Manrope',
+        family: "'Peaky Manrope', Arial, sans-serif",
+        role: 'Текст, цены, контакты',
+        sample: 'Мужская стрижка — 1500 ₽',
+      },
+    ],
+  },
   featured: true,
   teaser: {
     task: 'За пару экранов объяснить, что это за место, показать услуги с ценами и дать записаться в одно касание.',

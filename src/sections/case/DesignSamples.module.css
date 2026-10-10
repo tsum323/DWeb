@@ -1,0 +1,58 @@
+.samples {
+  display: grid;
+  gap: var(--space-block);
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+  gap: var(--space-6) var(--grid-gap);
+  margin-top: var(--space-5);
+}
+
+.color {
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+}
+
+.chip {
+  display: block;
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--space-2);
+  border: var(--border-width) solid var(--line-strong);
+}
+
+.colorName {
+  font-weight: 500;
+}
+
+.fonts {
+  margin-top: var(--space-5);
+}
+
+.font {
+  display: grid;
+  gap: var(--space-4);
+  padding-block: var(--space-6);
+  border-top: var(--border-width) solid var(--line);
+}
+
+@media (min-width: 64em) {
+  .font {
+    grid-template-columns: 4fr 8fr;
+    gap: var(--grid-gap);
+    align-items: baseline;
+  }
+}
+
+.fontMeta {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.specimen {
+  font-size: var(--text-h2);
+  font-weight: 500;
+  line-height: 1.1;
+}

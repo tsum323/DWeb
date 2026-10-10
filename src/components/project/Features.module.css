@@ -1,0 +1,41 @@
+.features {
+  row-gap: var(--space-8);
+}
+
+.list {
+  margin-top: var(--space-5);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  border-top: var(--border-width) solid var(--line);
+}
+
+.item p + p {
+  margin-top: var(--space-2);
+}
+
+.index {
+  padding-top: 0.45em;
+  color: var(--accent-text);
+}
+
+.planned {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  border: var(--border-width) dashed var(--line-strong);
+}
+
+.planned li {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.plannedTitle {
+  font-weight: 500;
+}

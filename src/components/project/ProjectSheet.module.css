@@ -45,48 +45,9 @@
   transition: background-size var(--dur-slow) var(--ease-out);
 }
 
-/* Композиция: десктоп на 10 колонок, телефон наезжает на его правый нижний угол. */
 .visual {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
-  column-gap: var(--grid-gap);
+  display: block;
   margin-top: var(--space-7);
-}
-
-.desktop {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  transition: transform var(--dur-slow) var(--ease-out);
-}
-
-.mobile {
-  grid-column: 3 / span 2;
-  grid-row: 2;
-  margin-top: calc(var(--space-9) * -1);
-  box-shadow: 0 0 0 var(--space-2) var(--bg); /* «вырез» в фоне вокруг телефона */
-  transition: transform var(--dur-slow) var(--ease-out);
-}
-
-@media (min-width: 40em) {
-  .mobile {
-    grid-column: 6 / span 3;
-    margin-top: calc(var(--space-10) * -1);
-  }
-}
-
-@media (min-width: 64em) {
-  .desktop {
-    grid-column: 1 / span 10;
-  }
-
-  .mobile {
-    grid-column: 10 / span 3;
-    grid-row: 1;
-    align-self: end;
-    margin-top: 0;
-    margin-bottom: calc(var(--space-9) * -1);
-  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -95,11 +56,12 @@
     background-size: 100% 2px;
   }
 
-  .visual:hover .desktop {
+  /* Телефон и десктоп сдвигаются на разное расстояние — лёгкий эффект глубины. */
+  .visual:hover > * > :first-child {
     transform: translateY(calc(var(--space-2) * -1));
   }
 
-  .visual:hover .mobile {
+  .visual:hover > * > :last-child {
     transform: translateY(calc(var(--space-4) * -1));
   }
 }

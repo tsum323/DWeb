@@ -72,6 +72,11 @@ export type Project = {
   features: Feature[];
   limitations: string[];
   metrics?: Metric[];
+  /** Образцы визуального решения проекта: цвета и шрифты. */
+  design?: {
+    palette: { name: string; hex: string; role: string }[];
+    fonts: { name: string; family: string; role: string; sample: string; italic?: boolean }[];
+  };
   /** Проект, который разбирается подробно на главной. Если не указан — первый в списке. */
   featured?: boolean;
   /** Короткий разбор для главной: по одному-два предложения. */

@@ -1,6 +1,7 @@
 import { Section } from '../../components/layout/Section';
 import { Tag } from '../../components/ui/Tag';
 import { principles, process, tools } from '../../content/approach';
+import { typograph } from '../../lib/text';
 import styles from './Approach.module.css';
 
 /** 03 / Подход — четыре этапа работы, принципы и инструменты. */
@@ -17,7 +18,7 @@ export function Approach() {
             <span className={styles.node} aria-hidden="true" />
             <p className={`t-mono ${styles.stepIndex}`}>Этап {String(i + 1).padStart(2, '0')}</p>
             <h3 className="t-h3">{step.title}</h3>
-            <p className="t-muted">{step.text}</p>
+            <p className="t-muted">{typograph(step.text)}</p>
             <p className={`t-mono ${styles.result}`}>→ {step.result}</p>
           </li>
         ))}
@@ -30,7 +31,7 @@ export function Approach() {
             {principles.map((p) => (
               <li key={p.title}>
                 <p className="t-h3">{p.title}</p>
-                <p className="t-muted">{p.text}</p>
+                <p className="t-muted">{typograph(p.text)}</p>
               </li>
             ))}
           </ul>

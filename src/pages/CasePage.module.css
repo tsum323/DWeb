@@ -1,12 +1,31 @@
-.cover {
-  padding-block: var(--space-block) var(--space-section);
-}
-
-.title {
+.spec {
   margin-top: var(--space-6);
 }
 
-.grid {
-  row-gap: var(--space-7);
-  margin-top: var(--space-8);
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--grid-gap);
+  margin-bottom: var(--space-block);
+}
+
+.repo {
+  margin-top: var(--space-7);
+}
+
+.limits ul {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.limits li {
+  padding-left: var(--space-5);
+  border-left: var(--border-width) dashed var(--line-strong);
 }
