@@ -1,0 +1,78 @@
+/* Окно по центру экрана; на телефоне — лист на всю ширину, прижатый к низу. */
+.dialog {
+  width: min(100% - 2 * var(--gutter-page), 40rem);
+  max-height: min(100% - 2 * var(--gutter-page), 48rem);
+  margin: auto;
+  padding: 0;
+  border: var(--border-width) solid var(--line-strong);
+  border-radius: var(--radius-1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.dialog[open] {
+  animation: enter var(--dur-slow) var(--ease-out);
+}
+
+.dialog::backdrop {
+  background-color: color-mix(in srgb, var(--graphite-900) 80%, transparent);
+}
+
+.panel {
+  padding: var(--space-5);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-width) solid var(--line);
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding-inline: var(--space-2);
+  margin-right: calc(var(--space-2) * -1);
+}
+
+.title {
+  margin-top: var(--space-6);
+}
+
+.lead {
+  margin-block: var(--space-3) var(--space-6);
+  color: var(--fg-muted);
+}
+
+@media (max-width: 39.99em) {
+  .dialog {
+    width: 100%;
+    max-width: none;
+    max-height: 92svh;
+    margin: auto 0 0;
+    border-inline: 0;
+    border-bottom: 0;
+  }
+
+  .panel {
+    padding: var(--space-4) var(--gutter-page) var(--space-6);
+  }
+}
+
+@media (min-width: 40em) {
+  .panel {
+    padding: var(--space-6);
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}

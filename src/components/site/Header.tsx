@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { nav } from '../../content/site';
+import { useDiscuss } from '../contact/DiscussDialog';
 import { Container } from '../layout/Container';
 import { Icon } from '../ui/Icon';
 import { Logo } from '../ui/Logo';
@@ -19,6 +20,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const discuss = useDiscuss();
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -86,7 +88,7 @@ export function Header() {
           </ul>
         </nav>
 
-        <Link to="/#contact" className={styles.cta}>
+        <Link {...discuss} className={styles.cta}>
           Обсудить проект
           <Icon name="arrow-right" size={16} />
         </Link>

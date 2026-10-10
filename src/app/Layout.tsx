@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 import { GridOverlay } from '../components/blueprint/GridOverlay';
+import { DiscussProvider } from '../components/contact/DiscussDialog';
 import { Footer } from '../components/site/Footer';
 import { Header } from '../components/site/Header';
 import { useGridShortcut } from '../lib/gridOverlay';
@@ -16,17 +17,19 @@ export function Layout() {
   useViewTransitions();
 
   return (
-    <div id="top" className={styles.layout}>
-      <a href="#main" className={styles.skip}>
-        Перейти к содержимому
-      </a>
-      <Header />
-      <main id="main" tabIndex={-1} className={styles.main}>
-        <Outlet />
-      </main>
-      <Footer />
-      <GridOverlay />
-      <ScrollManager />
-    </div>
+    <DiscussProvider>
+      <div id="top" className={styles.layout}>
+        <a href="#main" className={styles.skip}>
+          Перейти к содержимому
+        </a>
+        <Header />
+        <main id="main" tabIndex={-1} className={styles.main}>
+          <Outlet />
+        </main>
+        <Footer />
+        <GridOverlay />
+        <ScrollManager />
+      </div>
+    </DiscussProvider>
   );
 }

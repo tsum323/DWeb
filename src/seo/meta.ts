@@ -32,10 +32,44 @@ const home: Omit<PageMeta, 'path'> = {
   },
 };
 
+/** Простые страницы: анкета и политика. */
+const pagesMeta: Record<string, { title: string; description: string }> = {
+  '/brief': {
+    title: 'Анкета: расскажите о задаче — DWeb',
+    description:
+      'Несколько коротких вопросов о бизнесе и будущем сайте: готовые варианты ответа или свои слова. Помогает быстро понять задачу.',
+  },
+  '/privacy': {
+    title: 'Политика конфиденциальности — DWeb',
+    description:
+      'Какие данные собирает анкета на сайте DWeb, зачем они нужны, как передаются и как их удалить.',
+  },
+};
+
 /** Метаданные страницы по её пути. Используются и при пререндере, и в браузере. */
 export function getMeta(path: string): PageMeta {
   const clean = path.replace(/\/+$/, '') || '/';
   if (clean === '/') return { ...home, path: '/' };
+
+  const simple = pagesMeta[clean];
+  if (simple) {
+    return {
+      ...simple,
+      path: clean,
+      type: 'website',
+      noindex: !site.indexable,
+      image: homeImage,
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: simple.title,
+        description: simple.description,
+        url: absoluteUrl(clean),
+        inLanguage: 'ru',
+        isPartOf: { '@type': 'WebSite', name: site.name, url: `${site.url}/` },
+      },
+    };
+  }
 
   const caseMatch = clean.match(/^\/work\/([^/]+)$/);
   const project = caseMatch ? getProject(caseMatch[1]) : undefined;
@@ -73,7 +107,7 @@ export function getMeta(path: string): PageMeta {
 
 /** Все страницы, которые превращаются в готовые HTML-файлы при сборке. */
 export function prerenderPaths() {
-  return ['/', ...projects.map((p) => `/work/${p.slug}`)];
+  return ['/', ...projects.map((p) => `/work/${p.slug}`), ...Object.keys(pagesMeta)];
 }
 
 export function absoluteUrl(path: string) {

@@ -83,6 +83,8 @@ export function useViewTransitions() {
 
       const link = (event.target as Element | null)?.closest('a');
       if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+      // «Обсудить проект» открывает окно, а не переходит на другую страницу.
+      if (link.hasAttribute('data-discuss')) return;
 
       const url = new URL(link.href);
       if (url.origin !== window.location.origin || !url.pathname.startsWith(base)) return;

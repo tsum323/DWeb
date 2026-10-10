@@ -24,21 +24,6 @@
   color: var(--accent-text);
 }
 
-.channels {
-  display: grid;
-  justify-items: start;
-  gap: var(--space-5);
+.options {
   margin-top: var(--space-4);
-}
-
-.links {
-  display: grid;
-  gap: var(--space-3);
-}
-
-.placeholder {
-  margin-top: var(--space-4);
-  padding: var(--space-5);
-  border: var(--border-width) dashed var(--line-strong);
-  color: var(--fg-muted);
 }

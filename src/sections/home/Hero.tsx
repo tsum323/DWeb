@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { GridToggle } from '../../components/blueprint/GridToggle';
 import { Readout } from '../../components/blueprint/Readout';
 import { Stamp } from '../../components/blueprint/Stamp';
+import { useDiscuss } from '../../components/contact/DiscussDialog';
 import { Container } from '../../components/layout/Container';
 import { Col, Grid } from '../../components/layout/Grid';
 import { Actions } from '../../components/ui/Actions';
@@ -11,6 +12,7 @@ import styles from './Hero.module.css';
 
 /** Первый экран. Заголовок утверждён на этапе A. */
 export function Hero() {
+  const discuss = useDiscuss();
   return (
     <section data-surface="dark" className={styles.hero} aria-labelledby="hero-title">
       <Container className={styles.inner}>
@@ -30,7 +32,7 @@ export function Hero() {
               </p>
               <Actions>
                 <Button to="/#work">Смотреть работы</Button>
-                <Button to="/#contact" variant="secondary">
+                <Button {...discuss} variant="secondary">
                   Обсудить проект
                 </Button>
               </Actions>

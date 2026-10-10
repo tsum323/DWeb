@@ -1,20 +1,16 @@
 import { Col, Grid } from '../../components/layout/Grid';
 import { Section } from '../../components/layout/Section';
-import { Button } from '../../components/ui/Button';
-import { TextLink } from '../../components/ui/TextLink';
-import { contacts } from '../../content/site';
+import { ContactOptions } from '../../components/contact/ContactOptions';
 import styles from './Contact.module.css';
 
 const brief = [
   'Чем занимается бизнес',
   'Что нужно: новый сайт, лендинг или доработка',
-  'Желаемые сроки и ориентир по бюджету',
+  'К какому сроку нужен сайт',
 ];
 
-/** 04 / Контакт — финальный призыв. Контакты берутся из content/site.ts. */
+/** 04 / Контакт — финальный призыв. Контакты берутся из content/site.ts, рядом — путь к анкете. */
 export function Contact() {
-  const hasContacts = Boolean(contacts.email) || contacts.channels.length > 0;
-
   return (
     <Section id="contact" surface="light" index="04" label="Контакт" labelledBy="contact-title">
       <h2 id="contact-title" className={`t-display ${styles.title}`} data-reveal="lines">
@@ -36,26 +32,9 @@ export function Contact() {
 
         <Col span={{ sm: 4, md: 4, lg: 6 }} start={{ lg: 7 }}>
           <p className="t-mono t-muted">Связь</p>
-          {hasContacts ? (
-            <div className={styles.channels}>
-              {contacts.email && (
-                <Button href={`mailto:${contacts.email}`} icon="arrow-up-right">
-                  {contacts.email}
-                </Button>
-              )}
-              <ul role="list" className={styles.links}>
-                {contacts.channels.map((c) => (
-                  <li key={c.href}>
-                    <TextLink href={c.href} external className="t-h3">
-                      {c.label}
-                    </TextLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <p className={`t-body-l ${styles.placeholder}`}>Способы связи появятся здесь совсем скоро.</p>
-          )}
+          <div className={styles.options}>
+            <ContactOptions />
+          </div>
         </Col>
       </Grid>
     </Section>

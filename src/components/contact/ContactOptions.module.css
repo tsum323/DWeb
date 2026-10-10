@@ -1,0 +1,67 @@
+.list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* Вариант связи — «ячейка» чертежа: подпись, название, пояснение и стрелка. */
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--line-strong);
+  border-radius: var(--radius-1);
+  color: inherit;
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+}
+
+.kicker {
+  grid-column: 1;
+  color: var(--fg-muted);
+}
+
+.title {
+  grid-column: 1;
+}
+
+.note {
+  grid-column: 1;
+  color: var(--fg-muted);
+  overflow-wrap: anywhere;
+}
+
+.icon {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* Анкета выделена сигнальным цветом — это главный путь для сомневающихся. */
+.brief {
+  border-color: var(--accent-text);
+}
+
+.brief .kicker {
+  color: var(--accent-text);
+}
+
+.placeholder {
+  padding: var(--space-5);
+  border: var(--border-width) dashed var(--line-strong);
+  color: var(--fg-muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .row:hover {
+    border-color: var(--fg);
+    background-color: var(--bg-raised);
+  }
+
+  .row:hover .icon {
+    transform: translateX(3px);
+  }
+}

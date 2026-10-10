@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router';
 import { nav } from '../../content/site';
+import { useDiscuss } from '../contact/DiscussDialog';
 import { Icon } from '../ui/Icon';
 import { Logo } from '../ui/Logo';
 import styles from './MobileMenu.module.css';
@@ -14,6 +15,8 @@ type MobileMenuProps = { open: boolean; onClose: () => void };
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const ref = useRef<HTMLDialogElement>(null);
   const { pathname, hash } = useLocation();
+  // Сначала закрываем меню, затем открывается окно «Обсудить проект».
+  const discuss = useDiscuss(onClose);
 
   useEffect(() => {
     const dialog = ref.current;
@@ -51,7 +54,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         </ol>
       </nav>
 
-      <Link to="/#contact" className={styles.cta} onClick={onClose}>
+      <Link {...discuss} className={styles.cta}>
         Обсудить проект
         <Icon name="arrow-right" size={18} />
       </Link>
