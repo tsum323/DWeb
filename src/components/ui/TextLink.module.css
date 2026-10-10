@@ -1,0 +1,54 @@
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.2em;
+  color: inherit;
+}
+
+/* Подчёркивание нарисовано фоном: при наведении линия «уходит» вправо
+   и прорисовывается заново слева. */
+.text {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  padding-bottom: 0.08em;
+}
+
+.icon {
+  align-self: center;
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .text {
+    transition: background-size var(--dur-slow) var(--ease-out);
+  }
+
+  .link:hover .text {
+    animation: redraw var(--dur-slow) var(--ease-out);
+  }
+
+  .link:hover .icon {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes redraw {
+  0% {
+    background-size: 100% 1px;
+    background-position: 100% 100%;
+  }
+  45% {
+    background-size: 0% 1px;
+    background-position: 100% 100%;
+  }
+  46% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-size: 100% 1px;
+    background-position: 0 100%;
+  }
+}

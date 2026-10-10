@@ -1,0 +1,12 @@
+.section {
+  padding-block: var(--space-section);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-block);
+  padding-top: var(--space-3);
+  border-top: var(--border-width) solid var(--line);
+}

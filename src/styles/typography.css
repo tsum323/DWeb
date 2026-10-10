@@ -1,0 +1,74 @@
+/* Типографические роли. Используются как классы и внутри CSS-модулей
+   через composes: t-h2 from global. */
+
+.t-display,
+.t-h1,
+.t-h2,
+.t-h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  hyphens: manual;
+}
+
+.t-display {
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: 650;
+  font-variation-settings: 'SHRP' var(--sharp-display);
+}
+
+.t-h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-variation-settings: 'SHRP' var(--sharp-display);
+}
+
+.t-h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  font-variation-settings: 'SHRP' var(--sharp-heading);
+}
+
+.t-h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.015em;
+  font-weight: 550;
+}
+
+.t-body-l {
+  font-size: var(--text-body-l);
+  line-height: 1.5;
+  font-weight: 350;
+}
+
+.t-body {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.t-small {
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+/* Голос «чертежа»: служебные подписи, номера, штампы. */
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: 1.4;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  font-weight: 450;
+}
+
+.t-muted {
+  color: var(--fg-muted);
+}
+
+.t-measure {
+  max-width: var(--measure);
+}

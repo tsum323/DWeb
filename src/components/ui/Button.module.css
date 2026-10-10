@@ -1,0 +1,102 @@
+.button {
+  --btn-bg: transparent;
+  --btn-fg: var(--fg);
+  --btn-line: var(--line-strong);
+  --btn-fill: var(--fg);
+  --btn-fill-fg: var(--bg);
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: stretch;
+  min-height: 3.25rem; /* 52px — с запасом больше минимальной цели касания 44px */
+  border: var(--border-width) solid var(--btn-line);
+  border-radius: var(--radius-1);
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 1.2;
+  overflow: hidden;
+  transition:
+    color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+/* Заливка, «поднимающаяся» снизу при наведении. */
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--btn-fill);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-5);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  min-width: 3.25rem;
+  border-left: var(--border-width) solid var(--btn-line);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+.icon svg {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.primary {
+  --btn-bg: var(--accent);
+  --btn-fg: var(--on-accent);
+  --btn-line: var(--accent);
+  --btn-fill: var(--fg);
+  --btn-fill-fg: var(--bg);
+}
+
+.primary .icon {
+  border-left-color: color-mix(in srgb, var(--on-accent) 25%, transparent);
+}
+
+/* Наведение — только для мыши и трекпада. На сенсорных экранах
+   состояние не «залипает» после касания. */
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    color: var(--btn-fill-fg);
+    border-color: var(--btn-fill);
+  }
+
+  .button:hover::before {
+    transform: scaleY(1);
+  }
+
+  .button:hover .icon {
+    border-left-color: color-mix(in srgb, var(--btn-fill-fg) 25%, transparent);
+  }
+
+  .button:hover .icon svg {
+    transform: translateX(3px);
+  }
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:focus-visible {
+  outline-offset: var(--focus-offset);
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  opacity: 0.45;
+  pointer-events: none;
+}

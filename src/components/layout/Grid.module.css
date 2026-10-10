@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+}
+
+/* По умолчанию колонка занимает всю ширину сетки на каждой точке перелома. */
+.col {
+  grid-column: var(--start-sm, auto) / span var(--span-sm, 4);
+  min-width: 0;
+}
+
+@media (min-width: 40em) {
+  .col {
+    grid-column: var(--start-md, auto) / span var(--span-md, 8);
+  }
+}
+
+@media (min-width: 64em) {
+  .col {
+    grid-column: var(--start-lg, auto) / span var(--span-lg, 12);
+  }
+}

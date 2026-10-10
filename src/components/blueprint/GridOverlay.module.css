@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  /* «Разность» делает сетку видимой и на тёмных, и на светлых поверхностях. */
+  mix-blend-mode: difference;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  height: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter-page);
+}
+
+.column {
+  position: relative;
+  background-color: rgb(185 246 107 / 0.035);
+  border-inline: var(--border-width) solid rgb(185 246 107 / 0.45);
+}
+
+.column:nth-child(n + 5) {
+  display: none;
+}
+
+@media (min-width: 40em) {
+  .column:nth-child(n + 5) {
+    display: block;
+  }
+  .column:nth-child(n + 9) {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .column:nth-child(n + 9) {
+    display: block;
+  }
+}
+
+.number {
+  position: absolute;
+  bottom: var(--space-3);
+  left: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: rgb(185 246 107 / 0.9);
+}

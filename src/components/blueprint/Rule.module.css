@@ -1,0 +1,32 @@
+.rule {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  white-space: nowrap;
+}
+
+.line {
+  position: relative;
+  flex: 1;
+  height: var(--border-width);
+  background-color: var(--line-strong);
+}
+
+/* Засечки на концах размерной линии. */
+.line::before,
+.line::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: var(--border-width);
+  height: 9px;
+  background-color: var(--line-strong);
+}
+
+.line::before {
+  left: 0;
+}
+
+.line::after {
+  right: 0;
+}
