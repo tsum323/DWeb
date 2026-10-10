@@ -2,7 +2,7 @@
  * Пререндер: превращает каждую страницу сайта в готовый HTML-файл.
  *
  * Зачем: GitHub Pages умеет отдавать только файлы. Без пререндера прямая ссылка
- * на /dweb/work/peaky вернула бы 404, а соцсети и поисковики не увидели бы
+ * на /DWeb/work/peaky вернула бы 404, а соцсети и поисковики не увидели бы
  * заголовок и описание страницы (они не выполняют JavaScript).
  *
  * Запускается автоматически в конце `npm run build`.
@@ -15,13 +15,12 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 const ssrDir = path.join(root, 'dist-ssr');
 
-const { render, getMeta, prerenderPaths, absoluteUrl, site } = await import(
+const { render, getMeta, prerenderPaths, absoluteUrl, site, base } = await import(
   pathToFileURL(path.join(ssrDir, 'entry-server.js')).href
 );
 
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
 const assets = await readdir(path.join(dist, 'assets'));
-const base = '/dweb/';
 
 const escape = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

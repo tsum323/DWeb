@@ -5,7 +5,7 @@ import type { ExternalLink } from './schema';
 export const site = {
   name: 'DWeb',
   /** Адрес опубликованного сайта — для canonical, Open Graph и sitemap. */
-  url: 'https://tsum323.github.io/dweb',
+  url: 'https://tsum323.github.io/DWeb',
   locale: 'ru_RU',
   description:
     'DWeb — проектирование и разработка сайтов для небольшого бизнеса: от структуры и дизайна до адаптивной вёрстки и запуска.',
