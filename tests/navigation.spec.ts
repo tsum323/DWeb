@@ -25,7 +25,7 @@ test('десктоп: ссылки шапки ведут к разделам и 
   const errors = collectErrors(page);
   const nav = page.getByRole('navigation', { name: 'Основная навигация' });
 
-  await page.goto('work/peaky/');
+  await page.goto('work/brass/');
   for (const [label, id] of [
     ['Работы', 'work'],
     ['Услуги', 'services'],
@@ -46,9 +46,9 @@ test('переход на кейс: адрес, заголовок вкладк�
   await link.scrollIntoViewIfNeeded();
   await link.click();
 
-  await expect(page).toHaveURL(/\/DWeb\/work\/peaky$/);
-  await expect(page).toHaveTitle(/^Peaky Barbers/);
-  await expect(page.locator('h1')).toHaveText('Peaky Barbers');
+  await expect(page).toHaveURL(/\/DWeb\/work\/brass$/);
+  await expect(page).toHaveTitle(/^Brass Barbershop/);
+  await expect(page.locator('h1')).toHaveText('Brass Barbershop');
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
 
   await page.goBack();

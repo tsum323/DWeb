@@ -19,7 +19,7 @@
 
 ## 2. Данные проекта
 
-Создайте `src/content/projects/<slug>/index.ts` по образцу `peaky/index.ts`.
+Создайте `src/content/projects/<slug>/index.ts` по образцу `brass/index.ts`.
 Формат описан в `src/content/schema.ts` — редактор подскажет поля,
 а сборка не пройдёт, если обязательное поле пропущено.
 
@@ -39,10 +39,10 @@
 Добавьте проект в `src/content/projects/index.ts`:
 
 ```ts
-import { peaky } from './peaky';
+import { brass } from './brass';
 import { newProject } from './new-project';
 
-export const projects: Project[] = [newProject, peaky];
+export const projects: Project[] = [newProject, brass];
 ```
 
 Порядок в списке — порядок на главной. Проект с `featured: true`

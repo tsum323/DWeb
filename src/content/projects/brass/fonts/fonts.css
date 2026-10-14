@@ -1,8 +1,8 @@
-/* Шрифты сайта Peaky — только для образцов в кейсе (SIL Open Font License, см. LICENSE-*.txt).
+/* Шрифты сайта Brass — только для образцов в кейсе (SIL Open Font License, см. LICENSE-*.txt).
    Браузер скачивает файл, лишь когда на странице есть текст этим шрифтом. */
 
 @font-face {
-  font-family: 'Peaky Playfair';
+  font-family: 'Brass Playfair';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -11,7 +11,7 @@
 }
 
 @font-face {
-  font-family: 'Peaky Playfair';
+  font-family: 'Brass Playfair';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -20,7 +20,7 @@
 }
 
 @font-face {
-  font-family: 'Peaky Playfair';
+  font-family: 'Brass Playfair';
   font-style: italic;
   font-weight: 500;
   font-display: swap;
@@ -29,7 +29,7 @@
 }
 
 @font-face {
-  font-family: 'Peaky Playfair';
+  font-family: 'Brass Playfair';
   font-style: italic;
   font-weight: 500;
   font-display: swap;
@@ -38,7 +38,7 @@
 }
 
 @font-face {
-  font-family: 'Peaky Manrope';
+  font-family: 'Brass Manrope';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -47,7 +47,7 @@
 }
 
 @font-face {
-  font-family: 'Peaky Manrope';
+  font-family: 'Brass Manrope';
   font-style: normal;
   font-weight: 400;
   font-display: swap;

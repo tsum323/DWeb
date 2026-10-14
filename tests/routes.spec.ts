@@ -28,9 +28,9 @@ for (const p of pages) {
 }
 
 test('адрес без слэша перенаправляется на адрес со слэшем', async ({ request }) => {
-  const response = await request.get('work/peaky', { maxRedirects: 0 });
+  const response = await request.get('work/brass', { maxRedirects: 0 });
   expect(response.status()).toBe(301);
-  expect(response.headers().location).toBe('/DWeb/work/peaky/');
+  expect(response.headers().location).toBe('/DWeb/work/brass/');
 });
 
 test('неизвестный адрес: страница «не найдено» со статусом 404 и noindex', async ({ page }) => {

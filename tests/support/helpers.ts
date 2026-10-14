@@ -3,7 +3,7 @@ import type { Page } from '@playwright/test';
 /** Страницы сайта, которые проверяются во всех наборах. Пути — от базового /DWeb/. */
 export const pages = [
   { name: 'главная', path: '' },
-  { name: 'кейс Peaky', path: 'work/peaky/' },
+  { name: 'кейс Brass', path: 'work/brass/' },
   { name: 'анкета', path: 'brief/', images: false },
   { name: 'политика', path: 'privacy/', images: false },
 ] as const;
