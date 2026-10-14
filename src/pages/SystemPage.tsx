@@ -59,7 +59,7 @@ const colors = [
 
 const typeScale = [
   { cls: 't-display', name: 'Display', size: '44 → 116', sample: 'Сетка и код' },
-  { cls: 't-h1', name: 'H1', size: '40 → 96', sample: 'Peaky Barbers' },
+  { cls: 't-h1', name: 'H1', size: '40 → 96', sample: 'Brass Barbershop' },
   { cls: 't-h2', name: 'H2', size: '32 → 64', sample: 'Избранные работы' },
   { cls: 't-h3', name: 'H3', size: '22 → 32', sample: 'Адаптивная вёрстка под каждый экран' },
   {
@@ -259,12 +259,12 @@ export function SystemPage() {
             <Col span={{ sm: 4, md: 4, lg: 6 }} className={styles.demo}>
               <p className="t-mono t-muted">Штамп проекта (пример на реальных данных)</p>
               <Stamp
-                title="Peaky Barbers"
+                title="Brass Barbershop"
                 rows={[
-                  { term: 'Тип', value: 'Сайт барбершопа' },
+                  { term: 'Тип', value: 'Шаблон сайта барбершопа' },
                   { term: 'Объём', value: '6 страниц + 404' },
                   { term: 'Стек', value: 'HTML, CSS, JavaScript' },
-                  { term: 'Статус', value: 'Демо, согласование с владельцем' },
+                  { term: 'Статус', value: 'Демо-шаблон' },
                 ]}
               />
             </Col>

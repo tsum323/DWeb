@@ -4,7 +4,7 @@ import { getProject, projects } from '../content/projects';
 export type PageMeta = {
   title: string;
   description: string;
-  /** Путь без базового префикса: '/', '/work/peaky'. */
+  /** Путь без базового префикса: '/', '/work/brass'. */
   path: string;
   type: 'website' | 'article';
   noindex: boolean;

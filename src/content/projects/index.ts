@@ -1,8 +1,8 @@
 import type { Project } from '../schema';
-import { peaky } from './peaky';
+import { brass } from './brass';
 
 /** Порядок здесь = порядок на главной и в переходе «Следующий кейс». */
-export const projects: Project[] = [peaky];
+export const projects: Project[] = [brass];
 
 export function getProject(slug: string | undefined) {
   return projects.find((p) => p.slug === slug);

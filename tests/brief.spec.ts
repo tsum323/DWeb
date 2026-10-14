@@ -32,10 +32,10 @@ test.describe('окно «Обсудить проект»', () => {
   });
 
   test('на странице кейса кнопка тоже открывает окно', async ({ page }) => {
-    await page.goto('work/peaky/');
+    await page.goto('work/brass/');
     await page.getByRole('main').getByRole('link', { name: 'Обсудить проект' }).last().click();
     await expect(page.getByRole('dialog', { name: 'Как удобнее начать?' })).toBeVisible();
-    await expect(page).toHaveURL(/work\/peaky\/$/);
+    await expect(page).toHaveURL(/work\/brass\/$/);
   });
 
   test('без JavaScript кнопка ведёт к блоку «Контакт»', async ({ browser }, info) => {
