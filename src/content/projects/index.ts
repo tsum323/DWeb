@@ -1,8 +1,13 @@
 import type { Project } from '../schema';
 import { brass } from './brass';
+import { dashboard } from './dashboard';
+import { gorodok } from './gorodok';
+import { sudIdei } from './sud-idei';
+import { tehnika } from './tehnika';
+import { trading } from './trading';
 
-/** Порядок здесь = порядок на главной и в переходе «Следующий кейс». */
-export const projects: Project[] = [brass];
+/** Порядок здесь = порядок на странице «Проекты» и в переходе «Следующий кейс». */
+export const projects: Project[] = [tehnika, dashboard, brass, trading, sudIdei, gorodok];
 
 export function getProject(slug: string | undefined) {
   return projects.find((p) => p.slug === slug);
