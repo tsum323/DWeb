@@ -2,7 +2,7 @@ import type { Project } from '../../schema';
 import desktopHome from './media/desktop-home.webp?w=640;1080;1600;2400&format=avif;webp&as=picture';
 import desktopServices from './media/desktop-services.webp?w=640;1080;1600&format=avif;webp&as=picture';
 import mobileHome from './media/mobile-home.webp?w=390;780;1170&format=avif;webp&as=picture';
-import './fonts/fonts.css';
+import '../fonts/fonts.css';
 import mobileBooking from './media/mobile-booking.webp?w=390;780;1170&format=avif;webp&as=picture';
 
 /*
@@ -47,7 +47,8 @@ export const brass: Project = {
       ],
     },
     responsive: {
-      title: 'Адаптивность и интерактивность',
+      // Мягкий перенос: длинное слово не рвётся в узкой колонке заголовка.
+      title: 'Адаптивность и интерак\u00ADтивность',
       body: [
         'Вёрстка перестраивается на ширинах 1000, 900 и 700 px и работает от 320 px. Окно записи блокирует прокрутку страницы под собой, в том числе в iOS Safari. При настройке «уменьшить движение» анимации отключаются.',
       ],
@@ -112,27 +113,21 @@ export const brass: Project = {
     fonts: [
       {
         name: 'Playfair Display',
-        family: "'Brass Playfair', Georgia, serif",
+        family: "'Sample Playfair', Georgia, serif",
         role: 'Заголовки, курсив для акцентов',
         sample: 'Стиль начинается с деталей.',
         italic: true,
       },
       {
         name: 'Manrope',
-        family: "'Brass Manrope', Arial, sans-serif",
+        family: "'Sample Manrope', Arial, sans-serif",
         role: 'Текст, цены, контакты',
         sample: 'Мужская стрижка — 1800 ₽',
       },
     ],
   },
   featured: true,
-  teaser: {
-    task: 'Готовая основа для барбершопа: за пару экранов объяснить, что это за место, показать услуги с ценами и дать записаться в одно касание.',
-    solution:
-      'Тёмная палитра с латунным акцентом, крупная антиква в заголовках и короткие тексты. «Записаться» есть в шапке, на первом экране и в конце каждой страницы.',
-    build:
-      'Шесть статичных страниц на HTML, CSS и JavaScript без сборки. Окно записи со звонком и WhatsApp, адаптив до 320 px, инструкция по настройке под клиента.',
-  },
+  hook: 'Готовая основа для барбершопа: тёмная палитра с латунью, окно записи в одно касание и пошаговая инструкция по настройке под реальный салон.',
   media: {
     cover: {
       desktop: {

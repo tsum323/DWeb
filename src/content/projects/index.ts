@@ -1,8 +1,13 @@
 import type { Project } from '../schema';
 import { brass } from './brass';
+import { dashboard } from './dashboard';
+import { gorodok } from './gorodok';
+import { sudIdei } from './sud-idei';
+import { tehnika } from './tehnika';
+import { trading } from './trading';
 
-/** Порядок здесь = порядок на главной и в переходе «Следующий кейс». */
-export const projects: Project[] = [brass];
+/** Порядок здесь = порядок на странице «Проекты» и в переходе «Следующий кейс». */
+export const projects: Project[] = [tehnika, dashboard, brass, trading, sudIdei, gorodok];
 
 export function getProject(slug: string | undefined) {
   return projects.find((p) => p.slug === slug);
@@ -14,7 +19,8 @@ export function getNextProject(slug: string) {
   return projects[(i + 1) % projects.length];
 }
 
-/** Проект для подробного разбора на главной. */
-export function getFeaturedProject() {
-  return projects.find((p) => p.featured) ?? projects[0];
+/** Избранные проекты для главной: до трёх; если не отмечены — первые в списке. */
+export function getFeaturedProjects() {
+  const marked = projects.filter((p) => p.featured);
+  return (marked.length ? marked : projects).slice(0, 3);
 }

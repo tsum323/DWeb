@@ -26,8 +26,11 @@ test('десктоп: ссылки шапки ведут к разделам и 
   const nav = page.getByRole('navigation', { name: 'Основная навигация' });
 
   await page.goto('work/brass/');
+  await nav.getByRole('link', { name: 'Работы' }).click();
+  await expect(page).toHaveURL(/\/DWeb\/work$/);
+  await expect(page.locator('h1')).toHaveText('Проекты');
+
   for (const [label, id] of [
-    ['Работы', 'work'],
     ['Услуги', 'services'],
     ['Подход', 'approach'],
     ['Контакт', 'contact'],
@@ -42,13 +45,14 @@ test('десктоп: ссылки шапки ведут к разделам и 
 test('переход на кейс: адрес, заголовок вкладки, страница сверху', async ({ page }) => {
   const errors = collectErrors(page);
   await page.goto('');
-  const link = page.getByRole('link', { name: 'Смотреть кейс' }).first();
+  const link = page.locator('#work article h3 a').first();
   await link.scrollIntoViewIfNeeded();
+  const title = (await link.textContent())!.trim();
   await link.click();
 
-  await expect(page).toHaveURL(/\/DWeb\/work\/brass$/);
-  await expect(page).toHaveTitle(/^Brass Barbershop/);
-  await expect(page.locator('h1')).toHaveText('Brass Barbershop');
+  await expect(page).toHaveURL(/\/DWeb\/work\/[a-z-]+$/);
+  await expect(page).toHaveTitle(new RegExp(`^${title}`));
+  await expect(page.locator('h1')).toHaveText(title);
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
 
   await page.goBack();

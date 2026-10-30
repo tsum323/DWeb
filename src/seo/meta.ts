@@ -32,8 +32,13 @@ const home: Omit<PageMeta, 'path'> = {
   },
 };
 
-/** Простые страницы: анкета и политика. */
+/** Простые страницы: список проектов, анкета, политика. */
 const pagesMeta: Record<string, { title: string; description: string }> = {
+  '/work': {
+    title: 'Проекты — DWeb',
+    description:
+      'Все проекты DWeb: сайты для бизнеса и веб-приложения — коротко о каждом, подробности и скриншоты на странице проекта.',
+  },
   '/brief': {
     title: 'Анкета: расскажите о задаче — DWeb',
     description:

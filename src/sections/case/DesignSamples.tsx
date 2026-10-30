@@ -18,25 +18,27 @@ export function DesignSamples({ design }: { design: NonNullable<Project['design'
           ))}
         </ul>
       </div>
-      <div>
-        <h3 className="t-mono">Шрифты</h3>
-        <ul role="list" className={styles.fonts} data-reveal="stagger">
-          {design.fonts.map((f) => (
-            <li key={f.name} className={styles.font}>
-              <div className={styles.fontMeta}>
-                <span className={styles.colorName}>{f.name}</span>
-                <span className="t-small t-muted">{f.role}</span>
-              </div>
-              <p
-                className={styles.specimen}
-                style={{ fontFamily: f.family, fontStyle: f.italic ? 'italic' : undefined }}
-              >
-                {f.sample}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {design.fonts.length > 0 && (
+        <div>
+          <h3 className="t-mono">Шрифты</h3>
+          <ul role="list" className={styles.fonts} data-reveal="stagger">
+            {design.fonts.map((f) => (
+              <li key={f.name} className={styles.font}>
+                <div className={styles.fontMeta}>
+                  <span className={styles.colorName}>{f.name}</span>
+                  <span className="t-small t-muted">{f.role}</span>
+                </div>
+                <p
+                  className={styles.specimen}
+                  style={{ fontFamily: f.family, fontStyle: f.italic ? 'italic' : undefined }}
+                >
+                  {f.sample}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

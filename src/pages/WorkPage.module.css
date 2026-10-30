@@ -1,0 +1,24 @@
+.page {
+  padding-block: var(--space-block) var(--space-section);
+}
+
+.title {
+  margin-top: var(--space-6);
+}
+
+.lead {
+  margin-top: var(--space-5);
+  color: var(--fg-muted);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-9) var(--grid-gap);
+  margin-top: var(--space-block);
+}
+
+@media (min-width: 40em) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
