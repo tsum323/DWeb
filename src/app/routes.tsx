@@ -4,6 +4,7 @@ import { CasePage } from '../pages/CasePage';
 import { HomePage } from '../pages/HomePage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { PrivacyPage } from '../pages/PrivacyPage';
+import { WorkPage } from '../pages/WorkPage';
 import { SystemPage } from '../pages/SystemPage';
 import { Layout } from './Layout';
 
@@ -13,6 +14,7 @@ export function AppRoutes() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
+        <Route path="work" element={<WorkPage />} />
         <Route path="work/:slug" element={<CasePage />} />
         <Route path="brief" element={<BriefPage />} />
         <Route path="privacy" element={<PrivacyPage />} />

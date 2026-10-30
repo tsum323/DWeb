@@ -51,7 +51,7 @@ export function CaseOutro({ project }: { project: Project }) {
               <>
                 <p className="t-mono t-muted">Следующий кейс</p>
                 <p className={`t-body-l ${styles.soon}`}>Новые проекты появятся здесь по мере готовности.</p>
-                <Link to="/#work" className={`t-mono ${styles.back}`}>
+                <Link to="/work" className={`t-mono ${styles.back}`}>
                   ← Ко всем работам
                 </Link>
               </>
@@ -60,7 +60,7 @@ export function CaseOutro({ project }: { project: Project }) {
 
           <div className={styles.cta}>
             <h2 id="outro-title" className="t-h1" data-reveal="lines">
-              Нужен похожий сайт?
+              Нужен похожий проект?
             </h2>
             <p className="t-body-l t-muted t-measure">
               Расскажите о бизнесе и задаче — предложу структуру и план работ.

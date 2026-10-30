@@ -14,7 +14,8 @@ export function getNextProject(slug: string) {
   return projects[(i + 1) % projects.length];
 }
 
-/** Проект для подробного разбора на главной. */
-export function getFeaturedProject() {
-  return projects.find((p) => p.featured) ?? projects[0];
+/** Избранные проекты для главной: до трёх; если не отмечены — первые в списке. */
+export function getFeaturedProjects() {
+  const marked = projects.filter((p) => p.featured);
+  return (marked.length ? marked : projects).slice(0, 3);
 }

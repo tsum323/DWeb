@@ -77,14 +77,14 @@ export type Project = {
     palette: { name: string; hex: string; role: string }[];
     fonts: { name: string; family: string; role: string; sample: string; italic?: boolean }[];
   };
-  /** Проект, который разбирается подробно на главной. Если не указан — первый в списке. */
+  /** Показывать на главной среди избранных (до трёх проектов). */
   featured?: boolean;
-  /** Короткий разбор для главной: по одному-два предложения. */
-  teaser: { task: string; solution: string; build: string };
+  /** Одна-две строки для карточки в списке: чем проект интересен. */
+  hook: string;
   media: {
     /** Пара для обложки и карточки: десктоп + телефон. */
     cover: { desktop: Shot; mobile: Shot };
-    /** Дополнительные экраны для разбора и страницы кейса. */
+    /** Дополнительные экраны для страницы кейса. */
     gallery: Shot[];
   };
   seo: { title: string; description: string };

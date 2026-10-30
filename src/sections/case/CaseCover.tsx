@@ -24,7 +24,7 @@ export function CaseCover({ project }: { project: Project }) {
               <span className="visually-hidden"> (откроется в новой вкладке)</span>
             </Button>
           )}
-          <Button to="/#work" variant="secondary">
+          <Button to="/work" variant="secondary">
             Все работы
           </Button>
         </Actions>
