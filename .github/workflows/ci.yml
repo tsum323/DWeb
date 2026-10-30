@@ -20,7 +20,8 @@ permissions:
 jobs:
   check:
     name: Сборка и тесты
-    runs-on: ubuntu-latest
+    # Версия закреплена: на новых образах (ubuntu-latest = 26.04) Playwright 1.56 не ставит браузеры.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
@@ -58,7 +59,8 @@ jobs:
     # Только для main и только если проверка прошла.
     needs: check
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    # Та же версия, что и у проверки.
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       contents: write
