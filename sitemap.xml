@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tsum323.github.io/DWeb/</loc></url>
+  <url><loc>https://tsum323.github.io/DWeb/work/tehnika/</loc></url>
+  <url><loc>https://tsum323.github.io/DWeb/work/dashboard/</loc></url>
   <url><loc>https://tsum323.github.io/DWeb/work/brass/</loc></url>
+  <url><loc>https://tsum323.github.io/DWeb/work/trading/</loc></url>
+  <url><loc>https://tsum323.github.io/DWeb/work/sud-idei/</loc></url>
+  <url><loc>https://tsum323.github.io/DWeb/work/gorodok/</loc></url>
+  <url><loc>https://tsum323.github.io/DWeb/work/</loc></url>
   <url><loc>https://tsum323.github.io/DWeb/brief/</loc></url>
   <url><loc>https://tsum323.github.io/DWeb/privacy/</loc></url>
 </urlset>
