@@ -2,7 +2,7 @@ import type { Project } from '../../schema';
 import desktopHome from './media/desktop-home.webp?w=640;1080;1600;2400&format=avif;webp&as=picture';
 import desktopServices from './media/desktop-services.webp?w=640;1080;1600&format=avif;webp&as=picture';
 import mobileHome from './media/mobile-home.webp?w=390;780;1170&format=avif;webp&as=picture';
-import './fonts/fonts.css';
+import '../fonts/fonts.css';
 import mobileBooking from './media/mobile-booking.webp?w=390;780;1170&format=avif;webp&as=picture';
 
 /*
@@ -112,14 +112,14 @@ export const brass: Project = {
     fonts: [
       {
         name: 'Playfair Display',
-        family: "'Brass Playfair', Georgia, serif",
+        family: "'Sample Playfair', Georgia, serif",
         role: 'Заголовки, курсив для акцентов',
         sample: 'Стиль начинается с деталей.',
         italic: true,
       },
       {
         name: 'Manrope',
-        family: "'Brass Manrope', Arial, sans-serif",
+        family: "'Sample Manrope', Arial, sans-serif",
         role: 'Текст, цены, контакты',
         sample: 'Мужская стрижка — 1800 ₽',
       },
